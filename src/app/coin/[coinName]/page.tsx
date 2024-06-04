@@ -1,6 +1,6 @@
 import React from 'react'
 
-const page = ({params}) => {
+const page = ({params}:{params:{coinName:string}}) => {
   return (
     <div>{params.coinName}</div>
   )
