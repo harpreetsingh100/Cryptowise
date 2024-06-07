@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
 import StoreProvider from "../lib/StoreProvider";
+import MarketDataBar from "./components/MarketDataBar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,6 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <StoreProvider>
         <body className={inter.className}>
+          <MarketDataBar/>
           <div>
             <Link href='/'>Home</Link>
             <Link href='/portfolio'>Portfolio</Link>
