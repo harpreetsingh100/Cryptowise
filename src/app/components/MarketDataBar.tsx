@@ -21,7 +21,7 @@ const GlobalNavbar = () => {
 
   return (
     isSuccess && 
-    <div className="bg-[#14142bB] text-gray h-[5vh] flex justify-center items-center gap-10">
+    <div className="dark:bg-darkPurple bg-lightPurple text-gray h-[5vh] flex justify-center items-center gap-10">
       <div>Coins : {data?.data.active_cryptocurrencies} </div>
       <div>Exchange: {data?.data?.markets}</div>
       <div>MarketCap : {formattedNumber}</div>
