@@ -4,7 +4,7 @@ import "./globals.css";
 import StoreProvider from "../lib/StoreProvider";
 import MarketDataBar from "./components/MarketDataBar";
 
-const poppins = Poppins({ weight:"400", subsets: ["latin"] });
+const poppins = Poppins({ weight: "400", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,11 +20,11 @@ export default function RootLayout({
     <html lang="en">
       <StoreProvider>
         <body className={poppins.className}>
-          <MarketDataBar/>
+          <MarketDataBar />
 
-           {children}
+          {children}
         </body>
-       </StoreProvider>
+      </StoreProvider>
     </html>
   );
 }
