@@ -67,7 +67,7 @@ const Navbar = () => {
               <option value="GBP">GBP</option>
             </select>
           </div>
-          <div className="flex justify-center items-center bg-[#ebebfd] rounded-2xl h-10 px-[10px]">
+          <div className="flex justify-center items-center bg-[#ebebfd] rounded-2xl h-10 px-[14px]">
             <button>
               <Moon />
             </button>

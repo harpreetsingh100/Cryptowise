@@ -52,7 +52,7 @@ const GlobalNavbar = () => {
               strokeColor="#849dff"
               trailWidth={10}
               trailColor="gray"
-            />{" "}
+            />
           </div>
         </div>
       </div>
