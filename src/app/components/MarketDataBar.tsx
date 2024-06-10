@@ -30,9 +30,6 @@ const GlobalNavbar = () => {
     return <div>Loading</div>;
   }
 
-  // eslint-disable-next-line
-  console.log(data?.data?.total_volume?.[currencyType.toLocaleLowerCase()]);
-
   return (
     <div>
       {isSuccess && (

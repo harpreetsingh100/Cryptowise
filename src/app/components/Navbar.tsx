@@ -24,12 +24,9 @@ const Navbar = () => {
     localStorage.setItem("currencyType", e.target.value);
   };
 
-  // eslint-disable-next-line
-  console.log(currencyType);
   return (
     <div className="w-screen bg-lightBg dark:bg-darkBg dark:text-lightText text-purpleText">
       <div className="flex justify-between items-center max-w-[85%] h-[8vh] bg-lightBg dark:bg-darkBg dark:text-lightText text-purpleText w-screen m-auto">
-        {/* left div  */}
         <div className="flex gap-20">
           <div className="flex justify-center items-center">
             <Logo />
@@ -80,7 +77,6 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-        {/* // right div */}
         <div className="flex gap-3">
           <div className="relative">
             <input
