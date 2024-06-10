@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Link from "next/link";
 import StoreProvider from "../lib/StoreProvider";
 import MarketDataBar from "./components/MarketDataBar";
 
@@ -22,10 +21,7 @@ export default function RootLayout({
       <StoreProvider>
         <body className={inter.className}>
           <MarketDataBar/>
-          <div>
-            <Link href='/'>Home</Link>
-            <Link href='/portfolio'>Portfolio</Link>
-          </div>
+
            {children}
         </body>
        </StoreProvider>

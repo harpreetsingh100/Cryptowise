@@ -12,6 +12,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.5",
     "next": "14.2.3",
+    "next-themes": "^0.3.0",
     "rc-progress": "^4.0.0",
     "react": "^18",
     "react-dom": "^18",
