@@ -3,9 +3,13 @@ import { createSlice } from "@reduxjs/toolkit";
 
 interface currencyState {
   value: string;
+  symbol: string;
 }
 
-const initialState = { value: "USD" } satisfies currencyState as currencyState;
+const initialState = {
+  value: "USD",
+  symbol: "$",
+} satisfies currencyState as currencyState;
 
 const currencySlice = createSlice({
   name: "currency",
@@ -13,6 +17,19 @@ const currencySlice = createSlice({
   reducers: {
     changeCurrencyType(state, action) {
       state.value = action.payload;
+      switch (action.payload) {
+        case "USD":
+          state.symbol = "$";
+          break;
+        case "EUR":
+          state.symbol = "€";
+          break;
+        case "GBP":
+          state.symbol = "£";
+          break;
+        default:
+          state.symbol = "$";
+      }
     },
   },
 });

@@ -14,22 +14,27 @@ import { usePathname } from "next/navigation";
 const Navbar = () => {
   const dispatch = useAppDispatch();
   const currencyType = useAppSelector((state) => state.currency.value);
+  const currencySymbol = useAppSelector((state) => state.currency.symbol);
   const pathName = usePathname();
-  // eslint-disable-next-line
-  console.log(pathName);
+  const localStorageCurrency =
+    typeof window !== "undefined" ? localStorage.getItem("currencyType") : null;
 
   const handleCurrencyChange = (e: { target: { value: string } }) => {
     dispatch(changeCurrencyType(e.target.value));
+    localStorage.setItem("currencyType", e.target.value);
   };
+
+  // eslint-disable-next-line
+  console.log(currencyType);
   return (
     <div className="w-screen bg-lightBg dark:bg-darkBg dark:text-lightText text-purpleText">
       <div className="flex justify-between items-center max-w-[85%] h-[8vh] bg-lightBg dark:bg-darkBg dark:text-lightText text-purpleText w-screen m-auto">
         {/* left div  */}
-        <div className="flex gap-6">
+        <div className="flex gap-20">
           <div className="flex justify-center items-center">
             <Logo />
           </div>
-          <div className="font-extrabold text-2xl">Crypto Wise</div>
+          <div className="font-extrabold text-xl">Crypto Wise</div>
           <div className="flex gap-8 justify-center items-center ml-8 text-xl">
             <div className="flex justify-center items-center">
               <span
@@ -87,11 +92,14 @@ const Navbar = () => {
               <SearchIcon />
             </div>
           </div>
-          <div>
+          <div className="bg-[#ebebfd] rounded-lg h-10 px-1 dark:bg-[#191925]">
+            <span>{currencySymbol}</span>
             <select
-              className="bg-[#ebebfd] rounded-lg h-10 px-2 dark:bg-[#191925]"
-              value={currencyType}
-              onChange={handleCurrencyChange}>
+              className="bg-[#ebebfd] rounded-lg h-10 px-1 dark:bg-[#191925] cursor-pointer"
+              value={localStorageCurrency || currencyType}
+              onChange={(e) => {
+                handleCurrencyChange(e);
+              }}>
               <option value="USD">USD</option>
               <option value="EUR">EUR</option>
               <option value="GBP">GBP</option>
