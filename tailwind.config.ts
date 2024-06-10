@@ -21,6 +21,7 @@ const config: Config = {
        lightText: "#fff",
        darkPurple: "#1E1932",
        lightPurple:"#353570",
+       purpleText:"#343470",
       }
     },
   },

@@ -11,18 +11,11 @@ const currencySlice = createSlice({
   name: "currency",
   initialState,
   reducers: {
-    // increment(state) {
-    //   state.value++
-    // },
-    // decrement(state) {
-    //   state.value--
-    // },
-
-    // incrementByAmount(state, action: PayloadAction<number>) {
-    //   state.value += action.payload
-    // },
+    changeCurrencyType(state, action) {
+      state.value = action.payload;
+    },
   },
 });
 
-// export const { increment, decrement, incrementByAmount } = counterSlice.actions
+export const { changeCurrencyType } = currencySlice.actions;
 export default currencySlice.reducer;
