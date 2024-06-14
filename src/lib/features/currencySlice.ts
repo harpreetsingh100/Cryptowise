@@ -1,38 +1,39 @@
-import { createSlice } from "@reduxjs/toolkit";
-// import type { PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface currencyState {
-  value: string;
-  symbol: string;
+interface CurrencyState {
+  currencyType: string;
+  currencySymbol: string;
 }
 
-const initialState = {
-  value: "USD",
-  symbol: "$",
-} satisfies currencyState as currencyState;
+const initialState: CurrencyState = {
+  currencyType: "USD",
+  currencySymbol: "$",
+};
 
 const currencySlice = createSlice({
   name: "currency",
   initialState,
   reducers: {
-    changeCurrencyType(state, action) {
-      state.value = action.payload;
+    setCurrencyType: (state, action: PayloadAction<string>) => {
+      state.currencyType = action.payload;
+      localStorage.setItem("currencyType", action.payload);
       switch (action.payload) {
-        case "USD":
-          state.symbol = "$";
-          break;
         case "EUR":
-          state.symbol = "€";
+          state.currencySymbol = "€";
+          localStorage.setItem("currencySymbol", "€");
           break;
         case "GBP":
-          state.symbol = "£";
+          state.currencySymbol = "£";
+          localStorage.setItem("currencySymbol", "£");
           break;
+        case "USD":
         default:
-          state.symbol = "$";
+          state.currencySymbol = "$";
+          localStorage.setItem("currencySymbol", "$");
       }
     },
   },
 });
 
-export const { changeCurrencyType } = currencySlice.actions;
+export const { setCurrencyType } = currencySlice.actions;
 export default currencySlice.reducer;

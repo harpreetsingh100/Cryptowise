@@ -11,11 +11,12 @@ import CoinIcon from "@/svg/CoinIcon";
 import ExchangeIcon from "@/svg/ExchangeIcon";
 import ArrowIcon from "@/svg/ArrowIcon";
 
-const GlobalNavbar = () => {
+const MarketDataBar = () => {
   const { data, error, isLoading, isSuccess, isUninitialized } =
     useGetMarketDataQuery("");
-  const currencyType = useAppSelector((state) => state.currency.value);
-  const currencySymbol = useAppSelector((state) => state.currency.symbol);
+  const { currencySymbol, currencyType } = useAppSelector(
+    (state) => state.currency
+  );
   const formattedNumber: string = formatNumber(
     data?.data?.total_market_cap[currencyType.toLowerCase()]
   );
@@ -27,11 +28,15 @@ const GlobalNavbar = () => {
     return <div>Something went wrong</div>;
   }
   if (isLoading || isUninitialized) {
-    return <div>Loading</div>;
+    return (
+      <div className="dark:bg-darkPurple bg-lightPurple text-lightText h-[6vh] flex justify-center items-center gap-10 text-sm">
+        Loading
+      </div>
+    );
   }
 
   return (
-    <div>
+    <>
       {isSuccess && (
         <div className="dark:bg-darkPurple bg-lightPurple text-lightText h-[6vh] flex justify-center items-center gap-10 text-sm">
           <div className="flex items-center justify-center gap-2">
@@ -54,7 +59,7 @@ const GlobalNavbar = () => {
             </span>
             <span className="text-xs"> {formattedNumber}</span>
           </div>
-          <div className="text-xs flex justify-center items-center gap-2">
+          <div className="text-xs flex justify-center items-center gap-1">
             <span>{currencySymbol}</span>
             <span className="text-xs">{formattedVolume}</span>
             <div className="w-12 flex items-center justify-center">
@@ -99,8 +104,8 @@ const GlobalNavbar = () => {
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 };
 
-export default GlobalNavbar;
+export default MarketDataBar;
