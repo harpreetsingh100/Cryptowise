@@ -10,6 +10,7 @@ import EtheriumIcon from "@/svg/EtheriumIcon";
 import CoinIcon from "@/svg/CoinIcon";
 import ExchangeIcon from "@/svg/ExchangeIcon";
 import ArrowIcon from "@/svg/ArrowIcon";
+import Image from "next/image";
 
 const MarketDataBar = () => {
   const { data, error, isLoading, isSuccess, isUninitialized } =
@@ -60,7 +61,27 @@ const MarketDataBar = () => {
             <span className="text-xs"> {formattedNumber}</span>
           </div>
           <div className="text-xs flex justify-center items-center gap-1">
-            <span>{currencySymbol}</span>
+            <span>
+              {currencySymbol === "BTC" && (
+                <Image
+                  src="/bitcoin.webp"
+                  alt="bitcoin image"
+                  width={16}
+                  height={10}
+                />
+              )}
+              {currencySymbol === "ETH" && (
+                <Image
+                  src="/ethereum.webp"
+                  alt="bitcoin image"
+                  width={20}
+                  height={10}
+                />
+              )}
+              {currencySymbol !== "BTC" && currencySymbol !== "ETH" && (
+                <div>{currencySymbol}</div>
+              )}
+            </span>
             <span className="text-xs">{formattedVolume}</span>
             <div className="w-12 flex items-center justify-center">
               <Line

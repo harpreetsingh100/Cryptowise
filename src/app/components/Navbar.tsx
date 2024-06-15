@@ -5,26 +5,33 @@ import Logo from "@/svg/Logo";
 import HomeIcon from "@/svg/HomeIcon";
 import PortfolioIcon from "@/svg/PortfolioIcon";
 import SearchIcon from "@/svg/SearchIcon";
-import { useAppDispatch, useAppSelector } from "@/lib/hooks";
-import { setCurrencyType } from "@/lib/features/currencySlice";
+import Image from "next/image";
+import { useAppSelector } from "@/lib/hooks";
+import { useRef, useState } from "react";
 import { RootState } from "../../lib/store";
 import ThemeSwitcher from "./ThemeSwitcher";
 import { usePathname } from "next/navigation";
 import { FaArrowDown } from "react-icons/fa";
-import { useState } from "react";
+import CurrencyOptions from "./CurrencyOptions";
+import { useHandleClickOutside } from "@/lib/hooks/useHandleClickOutside";
 
 const Navbar = () => {
+  const [showCurrencyOptions, setShowCurrencyOptions] =
+    useState<boolean>(false);
   const { currencyType, currencySymbol } = useAppSelector(
     (state: RootState) => state.currency
   );
-  const [showCurrencyOptions, setShowCurrencyOptions] = useState(false);
-  const dispatch = useAppDispatch();
   const pathName = usePathname();
-
-  const handleCurrencyChange = (currency: string) => {
-    dispatch(setCurrencyType(currency));
+  const ref = useRef<HTMLDivElement>(null);
+  const closeDropdown = () => {
     setShowCurrencyOptions(false);
   };
+
+  const handleDropdownDisplay = () => {
+    setShowCurrencyOptions(showCurrencyOptions === true ? false : true);
+  };
+
+  useHandleClickOutside(ref, closeDropdown);
 
   return (
     <div className="w-screen bg-lightBg dark:bg-darkBg dark:text-lightText text-purpleText">
@@ -83,14 +90,14 @@ const Navbar = () => {
           <div className="relative">
             <input
               type="text"
-              className="w-64 bg-[#ebebfd] rounded-lg h-10 pl-8 dark:bg-[#191925]"
+              className="w-64 bg-[#ebebfd] rounded-lg h-10 pl-10 dark:bg-[#191925] outline-none "
               placeholder="Search..."
             />
-            <div className="absolute left-2  top-[11px] w-4">
+            <div className="absolute left-3  top-[11px] w-4">
               <SearchIcon />
             </div>
           </div>
-          <div className="bg-[#ebebfd] rounded-lg h-10 px-3 dark:bg-[#191925] min-w-18 flex justify-between items-center cursor-pointer relative">
+          <div className="bg-[#ebebfd] rounded-lg h-10 px-3 dark:bg-[#191925] max-w-18  flex justify-around items-center cursor-pointer relative">
             <div
               className="flex justify-between items-center gap-2"
               onClick={() => {
@@ -98,36 +105,41 @@ const Navbar = () => {
                   return !prev;
                 });
               }}>
-              <div>{currencySymbol}</div>
-              <div> {currencyType}</div>
-              {<FaArrowDown className="text-xs" />}
-            </div>
-            {showCurrencyOptions && (
-              <div className="bg-[#ebebfd] rounded-lg  px-3 dark:bg-[#191925] min-w-16 flex justify-between items-center cursor-pointer absolute top-12 border-2 left-0 flex-col gap-3 p-2">
-                <div
-                  className="flex justify-center items-center gap-2 bg-[#ebebfd] dark:bg-[#191925] min-w-16 "
-                  onClick={() => {
-                    handleCurrencyChange("USD");
-                  }}>
-                  <div>USD</div>
-                </div>
-                <div
-                  className="flex justify-center items-center gap-2 bg-[#ebebfd] dark:bg-[#191925] min-w-16"
-                  onClick={() => {
-                    handleCurrencyChange("EUR");
-                  }}>
-                  <div>EUR</div>
-                </div>
-                <div
-                  className="flex justify-center items-center gap-2 bg-[#ebebfd] dark:bg-[#191925] min-w-16"
-                  onClick={() => {
-                    handleCurrencyChange("GBP");
-                  }}>
-                  <div>GBP</div>
-                </div>
+              <div className="min-w-4 flex justify-center items-center">
+                {currencySymbol === "BTC" && (
+                  <Image
+                    src="/bitcoin.webp"
+                    alt="bitcoin image"
+                    width={20}
+                    height={10}
+                  />
+                )}
+                {currencySymbol === "ETH" && (
+                  <Image
+                    src="/ethereum.webp"
+                    alt="bitcoin image"
+                    width={20}
+                    height={10}
+                  />
+                )}
+                {currencySymbol !== "BTC" && currencySymbol !== "ETH" && (
+                  <div>{currencySymbol}</div>
+                )}
               </div>
-            )}
-            <div></div>
+              <div>{currencyType}</div>
+              <div>
+                <FaArrowDown className="text-xs" />
+              </div>
+            </div>
+            <div ref={ref} onClick={handleDropdownDisplay}>
+              {showCurrencyOptions && (
+                <div>
+                  <CurrencyOptions
+                    setShowCurrencyOptions={setShowCurrencyOptions}
+                  />
+                </div>
+              )}
+            </div>
           </div>
           <ThemeSwitcher />
         </div>

@@ -20,16 +20,19 @@ const currencySlice = createSlice({
       switch (action.payload) {
         case "EUR":
           state.currencySymbol = "€";
-          localStorage.setItem("currencySymbol", "€");
           break;
         case "GBP":
           state.currencySymbol = "£";
-          localStorage.setItem("currencySymbol", "£");
+          break;
+        case "BTC":
+          state.currencySymbol = "BTC";
+          break;
+        case "ETH":
+          state.currencySymbol = "ETH";
           break;
         case "USD":
         default:
           state.currencySymbol = "$";
-          localStorage.setItem("currencySymbol", "$");
       }
     },
   },
