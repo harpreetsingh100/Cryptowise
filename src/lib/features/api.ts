@@ -9,6 +9,13 @@ export const api = createApi({
     getSearchData: builder.query({
       query: (currency) => `/coins/markets/?vs_currency=${currency}`,
     }),
+    getChartCoinData: builder.query({
+      query: (query) => `coins/${query}`,
+    }),
   }),
 });
-export const { useGetMarketDataQuery, useGetSearchDataQuery } = api;
+export const {
+  useGetMarketDataQuery,
+  useGetSearchDataQuery,
+  useGetChartCoinDataQuery,
+} = api;
