@@ -17,7 +17,7 @@ const CurrencyOptions: React.FC<ChildComponentProps> = ({
   };
 
   return (
-    <div className="bg-[#ebebfd] rounded-lg  px-3 dark:bg-[#191925] min-w-18 max-w-24 flex justify-between items-center cursor-pointer absolute top-14 left-0 flex-col gap-3 p-2">
+    <div className="bg-[#ebebfd] rounded-lg px-3 dark:bg-[#191925] min-w-18 max-w-24 flex justify-between items-center cursor-pointer absolute top-14 left-0 flex-col gap-3 p-2 z-50">
       <div
         className="flex justify-center items-center gap-2 bg-[#ebebfd] dark:bg-[#191925] min-w-24 max-w-24"
         onClick={() => {

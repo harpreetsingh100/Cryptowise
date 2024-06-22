@@ -8,12 +8,12 @@ import SearchIcon from "@/svg/SearchIcon";
 import Image from "next/image";
 import { useAppSelector } from "@/lib/hooks";
 import { useRef, useState } from "react";
-import { RootState } from "../../lib/store";
-import ThemeSwitcher from "./ThemeSwitcher";
+import { RootState } from "@/lib/store";
+import ThemeSwitcher from "../ThemeSwitcher";
 import { usePathname } from "next/navigation";
-import { FaArrowDown } from "react-icons/fa";
-import CurrencyOptions from "./CurrencyOptions";
+import CurrencyOptions from "../CurrencyOptions";
 import { useHandleClickOutside } from "@/lib/hooks/useHandleClickOutside";
+import { RiArrowDownSFill } from "react-icons/ri";
 
 const Navbar = () => {
   const [showCurrencyOptions, setShowCurrencyOptions] =
@@ -34,7 +34,7 @@ const Navbar = () => {
   useHandleClickOutside(ref, closeDropdown);
 
   return (
-    <div className="w-screen bg-lightBg dark:bg-darkBg dark:text-lightText text-purpleText">
+    <div className="w-screen bg-lightBg dark:bg-darkBg dark:text-lightText text-purpleText shadow-xl py-2">
       <div className="flex justify-between items-center max-w-[85%] h-[8vh] bg-lightBg dark:bg-darkBg dark:text-lightText text-purpleText w-screen m-auto">
         <div className="flex gap-20">
           <div className="flex justify-center items-center">
@@ -97,7 +97,7 @@ const Navbar = () => {
               <SearchIcon />
             </div>
           </div>
-          <div className="bg-[#ebebfd] rounded-lg h-10 px-3 dark:bg-[#191925] max-w-18  flex justify-around items-center cursor-pointer relative">
+          <div className="bg-[#ebebfd] rounded-lg h-10 px-3 dark:bg-[#191925] max-w-24 flex justify-around items-center cursor-pointer relative">
             <div
               className="flex justify-between items-center gap-2"
               onClick={() => {
@@ -117,7 +117,7 @@ const Navbar = () => {
                 {currencySymbol === "ETH" && (
                   <Image
                     src="/ethereum.webp"
-                    alt="bitcoin image"
+                    alt="etherium image"
                     width={20}
                     height={10}
                   />
@@ -128,7 +128,7 @@ const Navbar = () => {
               </div>
               <div>{currencyType}</div>
               <div>
-                <FaArrowDown className="text-xs" />
+                <RiArrowDownSFill />
               </div>
             </div>
             <div ref={ref} onClick={handleDropdownDisplay}>

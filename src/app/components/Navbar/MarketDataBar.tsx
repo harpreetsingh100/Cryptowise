@@ -3,13 +3,13 @@
 import React from "react";
 import { useGetMarketDataQuery } from "@/lib/features/api";
 import { useAppSelector } from "@/lib/hooks";
-import { formatNumber } from "../utils/formatMarketData";
+import { formatNumber } from "../../utils/helperFunctions";
 import { Line } from "rc-progress";
 import BitcoinIcon from "@/svg/BitcoinIcon";
 import EtheriumIcon from "@/svg/EtheriumIcon";
 import CoinIcon from "@/svg/CoinIcon";
 import ExchangeIcon from "@/svg/ExchangeIcon";
-import ArrowIcon from "@/svg/ArrowIcon";
+import ArrowIcon from "@/svg/ArrowUpIcon";
 import Image from "next/image";
 
 const MarketDataBar = () => {
@@ -73,7 +73,7 @@ const MarketDataBar = () => {
               {currencySymbol === "ETH" && (
                 <Image
                   src="/ethereum.webp"
-                  alt="bitcoin image"
+                  alt="etherium image"
                   width={20}
                   height={10}
                 />

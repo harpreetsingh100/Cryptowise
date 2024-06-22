@@ -1,7 +1,7 @@
 import { Poppins } from "next/font/google";
 import "../app/globals.css";
 import StoreProvider from "../lib/StoreProvider";
-import MarketDataBar from "./components/MarketDataBar";
+import MarketDataBar from "../app/components/Navbar/MarketDataBar";
 import { Themeprovider } from "./Themeprovider";
 
 const poppins = Poppins({ weight: "400", subsets: ["latin"] });

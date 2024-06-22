@@ -1,4 +1,4 @@
-const ArrowIcon = () => (
+const ArrowUpIcon = () => (
   <svg
     className="self-center"
     width="12"
@@ -13,4 +13,4 @@ const ArrowIcon = () => (
   </svg>
 );
 
-export default ArrowIcon;
+export default ArrowUpIcon;
