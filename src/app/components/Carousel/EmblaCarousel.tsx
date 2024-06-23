@@ -9,7 +9,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import { useGetSearchDataQuery } from "@/lib/features/api";
 import { RootState } from "../../../lib/store";
 import Image from "next/image";
-import { useAppSelector } from "@/lib/hooks";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { RiArrowDownSFill, RiArrowUpSFill } from "react-icons/ri";
 import {
   truncateString,
@@ -17,6 +17,7 @@ import {
   addCommas,
   roundToTwoDecimals,
 } from "@/app/utils/helperFunctions";
+import { setSelectedCoin } from "@/lib/features/chartSlice";
 
 type PropType = {
   options?: EmblaOptionsType;
@@ -33,8 +34,13 @@ interface CoinData {
 const EmblaCarousel: React.FC<PropType> = (props) => {
   const { options } = props;
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
+  const { selectedCoin } = useAppSelector((state) => state.chart);
   const { currencyType } = useAppSelector((state: RootState) => state.currency);
   const { data } = useGetSearchDataQuery(currencyType);
+  const dispatch = useAppDispatch();
+
+  //eslint-disable-next-line
+  console.log(selectedCoin);
 
   const {
     prevBtnDisabled,
@@ -43,16 +49,29 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
     onNextButtonClick,
   } = usePrevNextButtons(emblaApi);
 
+  const handleChangeSelectedCoin = (coinId: string) => {
+    //eslint-disable-next-line
+    console.log(coinId);
+    dispatch(setSelectedCoin(coinId));
+  };
+
   return (
     <div className="relative">
       <div className="embla overflow-hidden">
         <div className="embla__viewport" ref={emblaRef}>
           <div className="embla__container flex gap-[1%] justify-between">
-            {data.map((coin: CoinData) => {
+            {data?.map((coin: CoinData) => {
               return (
                 <div
                   key={coin.id}
-                  className="embla__slide flex-none w-[24%] rounded-xl h-20 bg-lightBg dark:bg-[#191926] flex relative mx-[1px]">
+                  className={`${
+                    selectedCoin == coin.id
+                      ? "bg-[#A9AAEC] dark:bg-[#39397C] embla__slide flex-none w-[24%] rounded-xl h-20  flex relative mx-[1px] cursor-pointer"
+                      : "bg-lightBg dark:bg-[#191926] embla__slide flex-none w-[24%] rounded-xl h-20  flex relative mx-[1px] cursor-pointer"
+                  }`}
+                  onClick={() => {
+                    handleChangeSelectedCoin(coin.id);
+                  }}>
                   <div className="w-[30%] flex justify-center items-center">
                     <Image
                       src={coin.image}
