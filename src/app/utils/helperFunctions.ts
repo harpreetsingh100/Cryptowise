@@ -1,16 +1,17 @@
-export function formatNumber(number: number): string {
-  const suffixes: string[] = ["", "K", "M", "B", "T"];
-  const base: number = 1000;
+export function formatNumber(marketCap: number) {
+  const trillion = 1e12;
+  const billion = 1e9;
+  const million = 1e6;
 
-  if (number < base) {
-    return number.toFixed(2);
+  if (marketCap >= trillion) {
+    return (marketCap / trillion).toFixed(2) + " T";
+  } else if (marketCap >= billion) {
+    return (marketCap / billion).toFixed(2) + " B";
+  } else if (marketCap >= million) {
+    return (marketCap / million).toFixed(2) + " M";
+  } else {
+    return marketCap.toFixed(2);
   }
-
-  const magnitude: number = Math.floor(Math.log10(number) / 3);
-  const suffixIndex: number = Math.min(magnitude, suffixes.length - 1);
-
-  const adjustedNumber: number = number / Math.pow(base, suffixIndex);
-  return `${adjustedNumber.toFixed(2)}${suffixes[suffixIndex]}`;
 }
 
 export function capitalizeFirstLetter(word: string): string {
@@ -129,7 +130,7 @@ export function chartData(
         label: labelOne,
         data: dataOne,
         borderColor: "#7878FA",
-        borderWidth: 0,
+        borderWidth: 3,
         borderRadius: 3,
         categoryPercentage: 0.75,
         backgroundColor: (context: any) => {
@@ -160,4 +161,122 @@ export const getTodaysDate = () => {
   const today = new Date();
   const formattedDate = formatDate(today);
   return formattedDate;
+};
+
+export const colors = [
+  "#C27721",
+  "#6374C3",
+  "#30E0A1",
+  "#F5AC37",
+  "#F3EB2F",
+  "#638FFE",
+  "#4DEEE5",
+  "#F06142",
+  "#5082CF",
+  "#00B1A7",
+  "#FE2264",
+  "#FFA500",
+  "#6374C3",
+  "#FFA500",
+  "#FFD700",
+  "#FF6347",
+  "#FF0000",
+];
+
+export function formatMonthAndTime(milliseconds: number) {
+  const d = new Date();
+  const time = new Date(d.getTime() - milliseconds);
+  const currentMonth = month[time.getMonth()];
+  const currentDate = time.getDate();
+  const hour = String(time.getHours()).padStart(2, "0");
+  return `${currentMonth.slice(0, 3)} ${currentDate},${hour}:00 `;
+}
+
+export function beforeFit(axis: any) {
+  const labels = axis.chart.config._config.data.labels;
+  const length = labels.length - 1;
+  axis.ticks.push({ value: length, label: labels[length] });
+}
+
+export const options = {
+  onHover: {} as any,
+  interaction: {
+    intersect: false,
+    mode: "x" as "x",
+  },
+  elements: {
+    point: {
+      radius: 0,
+    },
+    line: {
+      tension: 5,
+    },
+  },
+  plugins: {
+    tooltip: {
+      backgroundColor: "rgba(0, 0, 0, 0)",
+      titleColor: "#7878FA",
+      titleFont: {
+        family: "Arial",
+        size: 12,
+      },
+      intersect: false,
+      callbacks: {
+        label: () => {
+          return "";
+        },
+      },
+      borderWidth: 0.3,
+      padding: {
+        top: 2,
+        left: 5,
+        right: 5,
+      },
+      cornerRadius: 5,
+    },
+    crosshair: {
+      line: {
+        color: "#7878FA",
+        dashPattern: [5, 5],
+        width: 0.25,
+      },
+      sync: {
+        enabled: false,
+      },
+      zoom: {
+        enabled: true,
+        zoomboxBackgroundColor: "rgba(120, 120, 250, 0.2)",
+        zoomboxBorderColor: "#7878FA",
+        zoomButtonText: "Reset Zoom",
+        zoomButtonClass: "reset-zoom",
+      },
+    },
+    legend: {
+      display: false,
+    },
+  },
+  responsive: true,
+  maintainAspectRatio: false,
+  scales: {
+    y: {
+      display: false, // Hide Y-axis values
+      ticks: {
+        display: false,
+      },
+    },
+    x: {
+      display: true,
+      beforeFit: beforeFit,
+      ticks: {
+        maxTicksLimit: 7,
+        color: "#9B9AB6",
+        fontSize: 8,
+        align: "inner" as "inner",
+        padding: 0,
+      },
+      grid: {
+        display: false, // Hide grid lines on X-axis
+      },
+    },
+  },
 };

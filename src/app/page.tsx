@@ -5,6 +5,7 @@ import CoinCarousel from "./components/Carousel/CoinCarousel";
 import ConverterButtons from "./components/ConverterButtons";
 import Chart from "./components/Charts/Chart";
 import Compare from "./components/Compare";
+import CoinTable from "./components/CoinTable/CoinTable";
 export default function Home() {
   return (
     <div>
@@ -14,6 +15,7 @@ export default function Home() {
         <Compare />
         <CoinCarousel />
         <Chart />
+        <CoinTable />
       </main>
     </div>
   );

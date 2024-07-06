@@ -45,6 +45,7 @@ export const makeStore = () => {
         },
       }).concat(api.middleware, logger),
   });
+
   store.persistor = persistStore(store);
   return store;
 };
