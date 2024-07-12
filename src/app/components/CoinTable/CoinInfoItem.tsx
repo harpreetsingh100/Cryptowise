@@ -203,9 +203,8 @@ const CoinInfoItem: React.FC<CoinInfoItemProps> = ({ coin, index }) => {
                     ? "text-[#FE2264] text-xs pl-1"
                     : "text-[#00B4A8] text-xs pl-1"
                 }`}>
-                {/* {circulating_supply &&
-                  addCommas(formatNumber(circulating_supply))} */}
-                {formatNumber(circulating_supply)}
+                {circulating_supply &&
+                  addCommas(formatNumber(circulating_supply))}
               </p>
             </div>
             <div className="flex justify-center items-center">

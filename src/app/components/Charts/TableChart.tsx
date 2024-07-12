@@ -54,14 +54,14 @@ const options: any = {
         maxTicksLimit: 8,
         align: "inner",
       },
-      beforeFit(axis: any) {
-        const labels = axis.chart.config._config.data.labels;
-        const length = labels.length - 1;
-        axis.ticks.push({
-          value: length,
-          label: labels[length],
-        });
-      },
+      // beforeFit(axis: any) {
+      //   const labels = axis.chart.config._config.data.labels;
+      //   const length = labels.length - 1;
+      //   axis.ticks.push({
+      //     value: length,
+      //     label: labels[length],
+      //   });
+      // },
       grid: {
         display: false,
       },

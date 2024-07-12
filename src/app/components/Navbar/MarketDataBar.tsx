@@ -16,10 +16,10 @@ const MarketDataBar = () => {
   const { data, error, isLoading, isSuccess, isUninitialized } =
     useGetMarketDataQuery("");
   const { currencyType } = useAppSelector((state) => state.currency);
-  const formattedNumber: string = formatNumber(
+  const formattedNumber = formatNumber(
     data?.data?.total_market_cap[currencyType.toLowerCase()]
   );
-  const formattedVolume: string = formatNumber(
+  const formattedVolume = formatNumber(
     data?.data.total_volume[currencyType.toLowerCase()]
   );
 

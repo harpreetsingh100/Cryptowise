@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import CoinTableHeader from "./CoinTableHeader";
@@ -5,22 +7,26 @@ import { useGetCoinTableListQuery } from "@/lib/features/api";
 import { useAppSelector } from "@/lib/hooks";
 import CoinInfoItem from "./CoinInfoItem";
 import { v4 as uuidv4 } from "uuid";
+import { ThreeDots } from "react-loader-spinner";
+import { useTheme } from "next-themes";
 
 const CoinTable = () => {
   const { currencyType } = useAppSelector((state) => state.currency);
   const [page, setPage] = useState(1);
   const [coins, setCoins] = useState<any[]>([]);
-  const { data, error, isLoading } = useGetCoinTableListQuery({
+
+  const { data, error } = useGetCoinTableListQuery({
     currency: currencyType,
     page,
     limit: 50,
   });
+  const { theme } = useTheme();
 
   useEffect(() => {
-    if (data && Array.isArray(data)) {
+    if (data && Array.isArray(data) && !error) {
       setCoins((prevCoins) => [...prevCoins, ...data]);
     }
-  }, [data]);
+  }, [data, error]);
 
   const fetchMoreData = () => {
     setPage((prevPage) => prevPage + 1);
@@ -35,15 +41,24 @@ const CoinTable = () => {
         hasMore={true}
         loader={
           <div>
-            <p className="flex justify-center items-center">Loading</p>
+            <p className="flex justify-center items-center">
+              <ThreeDots
+                visible={true}
+                height="80"
+                width="80"
+                color={`${theme === "light" ? "#A9AAEC" : "#6161D6"}`}
+                radius="9"
+                ariaLabel="three-dots-loading"
+                wrapperStyle={{}}
+                wrapperClass=""
+              />
+            </p>
           </div>
         }>
         {coins.map((coin, i) => (
           <CoinInfoItem key={uuidv4()} coin={coin} index={i} />
         ))}
       </InfiniteScroll>
-      {isLoading && <div>Loading</div>}
-      {error && <p>Error</p>}
     </div>
   );
 };
