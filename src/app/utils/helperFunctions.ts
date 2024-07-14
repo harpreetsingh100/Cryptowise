@@ -140,51 +140,6 @@ export const chartOptions: any = {
     },
   },
 };
-//   responsive: true,
-//   maintainAspectRatio: false,
-//   radius: 5,
-//   hitRadius: 30,
-//   hoverRadius: 12,
-//   scales: {
-//     y: {
-//       display: false,
-//       stacked: true,
-//       ticks: {
-//         display: false,
-//       },
-//       grid: {
-//         display: false,
-//         drawBorder: false,
-//       },
-//     },
-//     x: {
-//       display: true,
-//       stacked: true,
-//       ticks: {
-//         maxTicksLimit: 8,
-//         align: "inner",
-//         // Initialize with an empty array
-//         // TypeScript infers this as the correct type based on subsequent usage
-//         // You can also specify a type explicitly: ticks: Array<{ value: number; label: string }>
-//         callback: function (value: number, index: number, values: any[]) {
-//           const labels = this.chart.config.data.labels;
-//           if (index === values.length - 1) {
-//             return labels[labels.length - 1];
-//           }
-//           return value;
-//         },
-//       },
-//       grid: {
-//         display: false,
-//       },
-//     },
-//   },
-//   plugins: {
-//     legend: {
-//       display: false,
-//     },
-//   },
-// };
 
 export function chartData(
   chartLabels: any[],
