@@ -10,18 +10,16 @@ import EtheriumIcon from "@/svg/EtheriumIcon";
 import CoinIcon from "@/svg/CoinIcon";
 import ExchangeIcon from "@/svg/ExchangeIcon";
 import ArrowIcon from "@/svg/ArrowUpIcon";
-import Image from "next/image";
+import DynamicCurrencyButton from "../DynamicCurrencyButton";
 
 const MarketDataBar = () => {
   const { data, error, isLoading, isSuccess, isUninitialized } =
     useGetMarketDataQuery("");
-  const { currencySymbol, currencyType } = useAppSelector(
-    (state) => state.currency
-  );
-  const formattedNumber: string = formatNumber(
+  const { currencyType } = useAppSelector((state) => state.currency);
+  const formattedNumber = formatNumber(
     data?.data?.total_market_cap[currencyType.toLowerCase()]
   );
-  const formattedVolume: string = formatNumber(
+  const formattedVolume = formatNumber(
     data?.data.total_volume[currencyType.toLowerCase()]
   );
 
@@ -62,25 +60,7 @@ const MarketDataBar = () => {
           </div>
           <div className="text-xs flex justify-center items-center gap-1">
             <span>
-              {currencySymbol === "BTC" && (
-                <Image
-                  src="/bitcoin.webp"
-                  alt="bitcoin image"
-                  width={16}
-                  height={10}
-                />
-              )}
-              {currencySymbol === "ETH" && (
-                <Image
-                  src="/ethereum.webp"
-                  alt="etherium image"
-                  width={20}
-                  height={10}
-                />
-              )}
-              {currencySymbol !== "BTC" && currencySymbol !== "ETH" && (
-                <div>{currencySymbol}</div>
-              )}
+              <DynamicCurrencyButton />
             </span>
             <span className="text-xs">{formattedVolume}</span>
             <div className="w-12 flex items-center justify-center">

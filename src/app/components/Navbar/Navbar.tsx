@@ -5,7 +5,6 @@ import Logo from "@/svg/Logo";
 import HomeIcon from "@/svg/HomeIcon";
 import PortfolioIcon from "@/svg/PortfolioIcon";
 import SearchIcon from "@/svg/SearchIcon";
-import Image from "next/image";
 import { useAppSelector } from "@/lib/hooks";
 import { useRef, useState } from "react";
 import { RootState } from "@/lib/store";
@@ -14,13 +13,12 @@ import { usePathname } from "next/navigation";
 import CurrencyOptions from "../CurrencyOptions";
 import { useHandleClickOutside } from "@/lib/hooks/useHandleClickOutside";
 import { RiArrowDownSFill } from "react-icons/ri";
+import DynamicCurrencyButton from "../DynamicCurrencyButton";
 
 const Navbar = () => {
   const [showCurrencyOptions, setShowCurrencyOptions] =
     useState<boolean>(false);
-  const { currencyType, currencySymbol } = useAppSelector(
-    (state: RootState) => state.currency
-  );
+  const { currencyType } = useAppSelector((state: RootState) => state.currency);
   const pathName = usePathname();
   const ref = useRef<HTMLDivElement>(null);
   const closeDropdown = () => {
@@ -106,25 +104,7 @@ const Navbar = () => {
                 });
               }}>
               <div className="min-w-4 flex justify-center items-center">
-                {currencySymbol === "BTC" && (
-                  <Image
-                    src="/bitcoin.webp"
-                    alt="bitcoin image"
-                    width={20}
-                    height={10}
-                  />
-                )}
-                {currencySymbol === "ETH" && (
-                  <Image
-                    src="/ethereum.webp"
-                    alt="etherium image"
-                    width={20}
-                    height={10}
-                  />
-                )}
-                {currencySymbol !== "BTC" && currencySymbol !== "ETH" && (
-                  <div>{currencySymbol}</div>
-                )}
+                <DynamicCurrencyButton />
               </div>
               <div>{currencyType}</div>
               <div>
