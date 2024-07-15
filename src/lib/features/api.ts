@@ -16,6 +16,9 @@ export const api = createApi({
       query: ({ currency, page, limit }) =>
         `/coins/markets?vs_currency=${currency}&order=market_cap_desc&per_page=${limit}&page=${page}&sparkline=true&price_change_percentage=1h%2C24h%2C7d`,
     }),
+    getSearchQueryData: builder.query({
+      query: (searchQuery) => `search?query=${searchQuery}`,
+    }),
   }),
 });
 export const {
@@ -23,4 +26,5 @@ export const {
   useGetSearchDataQuery,
   useGetChartCoinDataQuery,
   useGetCoinTableListQuery,
+  useGetSearchQueryDataQuery,
 } = api;

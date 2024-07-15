@@ -4,7 +4,6 @@ import Link from "next/link";
 import Logo from "@/svg/Logo";
 import HomeIcon from "@/svg/HomeIcon";
 import PortfolioIcon from "@/svg/PortfolioIcon";
-import SearchIcon from "@/svg/SearchIcon";
 import { useAppSelector } from "@/lib/hooks";
 import { useRef, useState } from "react";
 import { RootState } from "@/lib/store";
@@ -14,6 +13,7 @@ import CurrencyOptions from "../CurrencyOptions";
 import { useHandleClickOutside } from "@/lib/hooks/useHandleClickOutside";
 import { RiArrowDownSFill } from "react-icons/ri";
 import DynamicCurrencyButton from "../DynamicCurrencyButton";
+import SearchBar from "../SearchBar/SearchBar";
 
 const Navbar = () => {
   const [showCurrencyOptions, setShowCurrencyOptions] =
@@ -86,16 +86,9 @@ const Navbar = () => {
         </div>
         <div className="flex gap-3">
           <div className="relative">
-            <input
-              type="text"
-              className="w-64 bg-[#ebebfd] rounded-lg h-10 pl-10 dark:bg-[#191925] outline-none "
-              placeholder="Search..."
-            />
-            <div className="absolute left-3  top-[11px] w-4">
-              <SearchIcon />
-            </div>
+            <SearchBar />
           </div>
-          <div className="bg-[#ebebfd] rounded-lg h-10 px-3 dark:bg-[#191925] max-w-24 flex justify-around items-center cursor-pointer relative">
+          <div className="bg-[#ebebfd] rounded-lg h-10 px-3 dark:bg-[#191925] w-[100px] flex justify-around items-center cursor-pointer relative border-[1px] border-[#6B7280]">
             <div
               className="flex justify-between items-center gap-2"
               onClick={() => {

@@ -40,20 +40,18 @@ const CoinTable = () => {
         next={fetchMoreData}
         hasMore={true}
         loader={
-          <div>
-            <p className="flex justify-center items-center">
-              <ThreeDots
-                visible={true}
-                height="80"
-                width="80"
-                color={`${theme === "light" ? "#A9AAEC" : "#6161D6"}`}
-                radius="9"
-                ariaLabel="three-dots-loading"
-                wrapperStyle={{}}
-                wrapperClass=""
-              />
-            </p>
-          </div>
+          <p className="flex justify-center items-center">
+            <ThreeDots
+              visible={true}
+              height="80"
+              width="80"
+              color={`${theme === "light" ? "#A9AAEC" : "#6161D6"}`}
+              radius="9"
+              ariaLabel="three-dots-loading"
+              wrapperStyle={{}}
+              wrapperClass=""
+            />
+          </p>
         }>
         {coins.map((coin, i) => (
           <CoinInfoItem key={uuidv4()} coin={coin} index={i} />
