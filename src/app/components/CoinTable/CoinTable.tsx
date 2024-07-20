@@ -6,7 +6,6 @@ import CoinTableHeader from "./CoinTableHeader";
 import { useGetCoinTableListQuery } from "@/lib/features/api";
 import { useAppSelector } from "@/lib/hooks";
 import CoinInfoItem from "./CoinInfoItem";
-import { v4 as uuidv4 } from "uuid";
 import { ThreeDots } from "react-loader-spinner";
 import { useTheme } from "next-themes";
 
@@ -54,7 +53,7 @@ const CoinTable = () => {
           </p>
         }>
         {coins.map((coin, i) => (
-          <CoinInfoItem key={uuidv4()} coin={coin} index={i} />
+          <CoinInfoItem key={coin.id} coin={coin} index={i} />
         ))}
       </InfiniteScroll>
     </div>

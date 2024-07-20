@@ -3,7 +3,6 @@ import SearchIcon from "@/svg/SearchIcon";
 import { useState } from "react";
 import { useDebounce } from "../../../lib/hooks/useDebounce";
 import Link from "next/link";
-import { v4 as uuidv4 } from "uuid";
 
 const SearchBar = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -42,7 +41,7 @@ const SearchBar = () => {
               return (
                 <Link
                   href="/portfolio"
-                  key={uuidv4()}
+                  key={coin.id}
                   className="ml-10 cursor-pointer hover:text-[#6161D6]">
                   {coin.name}
                 </Link>
