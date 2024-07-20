@@ -13,7 +13,7 @@ export default function ThemeSwitcher() {
   if (!mounted)
     return (
       <div>
-        <div className="flex justify-center items-center bg-[#ebebfd] dark:bg-[#191925] rounded-2xl h-10 px-[14px]">
+        <div className="flex justify-center items-center bg-[#ebebfd] dark:bg-[#191925] rounded-2xl h-10 px-[14px] border-[#6B7280] border-[1px]">
           <FiSun onClick={() => setTheme("light")} className="cursor-pointer" />
         </div>
       </div>
@@ -22,7 +22,7 @@ export default function ThemeSwitcher() {
   if (resolvedTheme === "dark") {
     return (
       <div>
-        <div className="flex justify-center items-center bg-[#ebebfd] dark:bg-[#191925] rounded-2xl h-10 px-[14px]">
+        <div className="flex justify-center items-center bg-[#ebebfd] dark:bg-[#191925] rounded-2xl h-10 px-[14px] border-[#6B7280] border-[1px]">
           <FiSun onClick={() => setTheme("light")} className="cursor-pointer" />
         </div>
       </div>
@@ -31,7 +31,7 @@ export default function ThemeSwitcher() {
 
   if (resolvedTheme === "light") {
     return (
-      <div className="flex justify-center items-center bg-[#ebebfd] dark:bg-[#191925] rounded-2xl h-10 px-[14px]">
+      <div className="flex justify-center items-center bg-[#ebebfd] dark:bg-[#191925] rounded-2xl h-10 px-[14px] border-[#6B7280] border-[1px]">
         <FiMoon onClick={() => setTheme("dark")} className="cursor-pointer" />
       </div>
     );
