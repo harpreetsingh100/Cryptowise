@@ -162,7 +162,7 @@ const CoinInfoItem: React.FC<CoinInfoItemProps> = ({ coin, index }) => {
                     ? "text-[#FE2264] text-xs pl-1"
                     : "text-[#00B4A8] text-xs pl-1"
                 }`}>
-                {total_volume && formatNumber(total_volume)}
+                {total_volume && addCommas(formatNumber(total_volume))}
               </p>
             </div>
             <div className="flex justify-center items-center">

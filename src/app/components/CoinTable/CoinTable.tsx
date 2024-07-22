@@ -23,7 +23,7 @@ const CoinTable = () => {
 
   useEffect(() => {
     if (data && Array.isArray(data) && !error) {
-      setCoins((prevCoins) => [...prevCoins, ...data]);
+      setCoins(data);
     }
   }, [data, error]);
 
@@ -33,7 +33,7 @@ const CoinTable = () => {
 
   return (
     <div className="max-w-[85%] mx-auto mt-4">
-      <CoinTableHeader />
+      <CoinTableHeader setCoins={setCoins} />
       <InfiniteScroll
         dataLength={coins.length}
         next={fetchMoreData}
