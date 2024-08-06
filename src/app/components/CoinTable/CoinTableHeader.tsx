@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CgArrowsExchangeV } from "react-icons/cg";
+import CoinTableSingleHeading from "./CoinTableSingleHeading";
 
 interface Coin {
   name: string;
@@ -46,10 +46,12 @@ const CoinTableHeader = ({ setCoins }: CoinsProps) => {
   ) => {
     setCoins((prevCoins) => {
       const sortedCoins = [...prevCoins].sort((a, b) => {
+        const first: any = a[toggleBy];
+        const second: any = b[toggleBy];
         if (toggleType) {
-          return (a[toggleBy] as number) - (b[toggleBy] as number);
+          return first - second;
         } else {
-          return (b[toggleBy] as number) - (a[toggleBy] as number);
+          return second - first;
         }
       });
       return sortedCoins;
@@ -62,108 +64,92 @@ const CoinTableHeader = ({ setCoins }: CoinsProps) => {
       <div className="w-[5%] flex justify-center items-center text-sm text-gray-600">
         <p> #</p>
       </div>
-      <div
-        className="w-[20%] flex justify-center text-sm text-gray-600 cursor-pointer"
-        onClick={handleSortAlphabetically}>
-        <p> Name</p>
-        <div className="flex justify-center items-center ml-2">
-          <CgArrowsExchangeV size={20} color="#6161D6" />
-        </div>
-      </div>
-      <div
-        className="w-[10%] flex justify-start text-sm text-gray-600 cursor-pointer"
-        onClick={() => {
+      <CoinTableSingleHeading
+        title="Name"
+        width="20"
+        justifyContent="center"
+        handleSort={handleSortAlphabetically}
+      />
+      <CoinTableSingleHeading
+        title="Price"
+        width="10"
+        justifyContent="start"
+        handleSort={() => {
           handleSort(isToggleByPrice, "current_price", setIsToggleByPrice);
-        }}>
-        <p> Price</p>
-        <div className="flex justify-center items-center ml-2">
-          <CgArrowsExchangeV size={20} color="#6161D6" />
-        </div>
-      </div>
-      <div
-        className="w-[8%] flex justify-start text-sm text-gray-600 cursor-pointer"
-        onClick={() => {
+        }}
+      />
+      <CoinTableSingleHeading
+        title="1h%"
+        width="8"
+        justifyContent="start"
+        handleSort={() => {
           handleSort(
             isToggleByOneHour,
             "price_change_percentage_1h_in_currency",
             setIsToggleByOneHour
           );
-        }}>
-        <p> 1h%</p>
-        <div className="flex justify-center items-center ml-1">
-          <CgArrowsExchangeV size={20} color="#6161D6" />
-        </div>
-      </div>
-      <div
-        className="w-[8%] flex justify-start text-sm text-gray-600 cursor-pointer"
-        onClick={() => {
+        }}
+      />
+      <CoinTableSingleHeading
+        title="24h%"
+        width="8"
+        justifyContent="start"
+        handleSort={() => {
           handleSort(
             isToggleBy24Hours,
             "price_change_percentage_24h_in_currency",
             setIsToggleBy24Hours
           );
-        }}>
-        <p> 24h%</p>
-        <div className="flex justify-center items-center ml-2">
-          <CgArrowsExchangeV size={20} color="#6161D6" />
-        </div>
-      </div>
-      <div
-        className="w-[8%] flex justify-start text-sm text-gray-600 cursor-pointer"
-        onClick={() => {
+        }}
+      />
+      <CoinTableSingleHeading
+        title="7d%"
+        width="8"
+        justifyContent="start"
+        handleSort={() => {
           handleSort(
             isToggleBy7Days,
             "price_change_percentage_7d_in_currency",
             setIsToggleBy7Days
           );
-        }}>
-        <p> 7d%</p>
-        <div className="flex justify-center items-center ml-2">
-          <CgArrowsExchangeV size={20} color="#6161D6" />
-        </div>
-      </div>
-      <div
-        className="w-[18%] flex justify-center text-sm text-gray-600 cursor-pointer"
-        onClick={() => {
+        }}
+      />
+      <CoinTableSingleHeading
+        title="24h volume / Market Cap"
+        width="18"
+        justifyContent="center"
+        handleSort={() => {
           handleSort(
             isToggleByTotalVolume,
             "total_volume",
             setIsToggleByTotalVolume
           );
-        }}>
-        <p> 24h volume / Market Cap</p>
-        <div className="flex justify-center items-center ml-2">
-          <CgArrowsExchangeV size={20} color="#6161D6" />
-        </div>
-      </div>
-      <div
-        className="w-[18%] flex justify-center text-sm text-gray-600 cursor-pointer"
-        onClick={() => {
+        }}
+      />
+      <CoinTableSingleHeading
+        title="Circulating / Total Supply"
+        width="18"
+        justifyContent="center"
+        handleSort={() => {
           handleSort(
             isToggleByCirculatingSupply,
             "circulating_supply",
             setIsToggleByCirculatingSupply
           );
-        }}>
-        <p> Circulating / Total Supply</p>
-        <div className="flex justify-center items-center ml-2">
-          <CgArrowsExchangeV size={20} color="#6161D6" />
-        </div>
-      </div>
-      <div
-        className="w-[10%] flex justify-center text-gray-600 cursor-pointer"
-        onClick={() => {
+        }}
+      />
+      <CoinTableSingleHeading
+        title="Last 7d"
+        width="10"
+        justifyContent="center"
+        handleSort={() => {
           handleSort(
             isToggleBy7Days,
             "price_change_percentage_7d_in_currency",
             setIsToggleBy7Days
           );
-        }}>
-        <p>Last 7d</p>
-        <div className="flex justify-center items-center ml-2">
-          <CgArrowsExchangeV size={20} color="#6161D6" />
-        </div>
-      </div>
+        }}
+      />
     </div>
   );
 };
