@@ -144,13 +144,17 @@ export const chartOptions: any = {
 export function chartData(
   chartLabels: any[],
   labelOne: string,
-  dataOne: any[]
+  dataOne: any[],
+  coinOneName?: string
 ) {
+  const label = coinOneName
+    ? capitalizeFirstLetter(coinOneName)
+    : capitalizeFirstLetter(labelOne);
   const data = {
     labels: chartLabels,
     datasets: [
       {
-        label: labelOne,
+        label: label,
         data: dataOne,
         borderColor: "#7878FA",
         borderWidth: 3,
@@ -214,85 +218,3 @@ export function formatMonthAndTime(milliseconds: number) {
   const hour = String(time.getHours()).padStart(2, "0");
   return `${currentMonth.slice(0, 3)} ${currentDate},${hour}:00 `;
 }
-
-//   onHover: {} as any,
-//   interaction: {
-//     intersect: false,
-//     mode: "x" as "x",
-//   },
-//   elements: {
-//     point: {
-//       radius: 0,
-//     },
-//     line: {
-//       tension: 5,
-//     },
-//   },
-//   plugins: {
-//     tooltip: {
-//       backgroundColor: "rgba(0, 0, 0, 0)",
-//       titleColor: "#7878FA",
-//       titleFont: {
-//         family: "Arial",
-//         size: 12,
-//       },
-//       intersect: false,
-//       callbacks: {
-//         label: () => {
-//           return "";
-//         },
-//       },
-//       borderWidth: 0.3,
-//       padding: {
-//         top: 2,
-//         left: 5,
-//         right: 5,
-//       },
-//       cornerRadius: 5,
-//     },
-//     crosshair: {
-//       line: {
-//         color: "#7878FA",
-//         dashPattern: [5, 5],
-//         width: 0.25,
-//       },
-//       sync: {
-//         enabled: false,
-//       },
-//       zoom: {
-//         enabled: true,
-//         zoomboxBackgroundColor: "rgba(120, 120, 250, 0.2)",
-//         zoomboxBorderColor: "#7878FA",
-//         zoomButtonText: "Reset Zoom",
-//         zoomButtonClass: "reset-zoom",
-//       },
-//     },
-//     legend: {
-//       display: false,
-//     },
-//   },
-//   responsive: true,
-//   maintainAspectRatio: false,
-//   scales: {
-//     y: {
-//       display: false, // Hide Y-axis values
-//       ticks: {
-//         display: false,
-//       },
-//     },
-//     x: {
-//       display: true,
-//       beforeFit: beforeFit,
-//       ticks: {
-//         maxTicksLimit: 7,
-//         color: "#9B9AB6",
-//         fontSize: 8,
-//         align: "inner" as "inner",
-//         padding: 0,
-//       },
-//       grid: {
-//         display: false, // Hide grid lines on X-axis
-//       },
-//     },
-//   },
-// };
