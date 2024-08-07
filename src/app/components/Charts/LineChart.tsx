@@ -34,11 +34,13 @@ ChartJS.register(
 const LineChart = ({
   chartDataOfCoin,
   days,
+  coinOneName,
+  coinTwoName,
 }: {
   chartDataOfCoin: any;
   days: number;
-  isLoading: boolean;
-  isError: any;
+  coinOneName?: string;
+  coinTwoName?: string;
 }) => {
   const { selectedCoin } = useAppSelector((state) => state.chart);
   const pricesOfCoin = chartDataOfCoin?.prices.map((item: any) => item[1]);
@@ -54,17 +56,28 @@ const LineChart = ({
     <div className="bg-white dark:bg-[#191934] py-6 rounded-xl">
       <div className="bg-white dark:bg-[#191934] text-white p-6">
         <div className="text-black dark:text-white">
-          {capitalizeFirstLetter(selectedCoin)}
+          {coinOneName && coinTwoName
+            ? capitalizeFirstLetter(coinOneName) +
+              " " +
+              "To" +
+              " " +
+              capitalizeFirstLetter(coinTwoName)
+            : capitalizeFirstLetter(selectedCoin)}
         </div>
-        <div className="text-black dark:text-white">
-          {coinPrice} {currencyType}
-        </div>
-        <div className="text-black dark:text-white">{getTodaysDate()}</div>
+
+        {!coinOneName && (
+          <div className="text-black dark:text-white">
+            {coinPrice} {currencyType}
+          </div>
+        )}
+        {!coinOneName && (
+          <div className="text-black dark:text-white">{getTodaysDate()}</div>
+        )}
       </div>
       <div className="h-[250px] bg-white dark:bg-[#191934] px-6">
         <Line
           options={chartOptions}
-          data={chartData(chartLabels, selectedCoin, pricesOfCoin)}
+          data={chartData(chartLabels, selectedCoin, pricesOfCoin, coinOneName)}
         />
       </div>
     </div>

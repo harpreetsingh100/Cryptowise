@@ -22,12 +22,7 @@ const Chart = () => {
     <div className="w-[85%] mx-auto mt-8 h-[500px]">
       <div className="flex justify-between items-center gap-[2%]">
         <div className="h-full w-[49%]">
-          <LineChart
-            chartDataOfCoin={chartDataOfCoin}
-            days={days}
-            isLoading={isLoading}
-            isError={isError}
-          />
+          <LineChart chartDataOfCoin={chartDataOfCoin} days={days} />
         </div>
         <div className="h-full w-[49%]">
           <BarChart
@@ -38,7 +33,7 @@ const Chart = () => {
           />
         </div>
       </div>
-      <div className=" w-[360px] flex gap-2 bg-[#E3E5FB] dark:bg-[#232337] rounded-lg mt-6 text-black dark:text-white">
+      <div className=" w-[315px] flex gap-2 bg-[#E3E5FB] dark:bg-[#232337] rounded-lg mt-6 text-black dark:text-white">
         <DaysButtons days={days} setDays={setDays} />
       </div>
     </div>
