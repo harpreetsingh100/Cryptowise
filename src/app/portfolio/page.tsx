@@ -1,11 +1,7 @@
-import Navbar from "../components/Navbar/Navbar";
+import Portfolio from "../components/Portfolio/Portfolio";
 
 const page = () => {
-  return (
-    <div>
-      <Navbar />
-    </div>
-  );
+  return <Portfolio />;
 };
 
 export default page;

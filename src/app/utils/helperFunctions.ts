@@ -218,3 +218,38 @@ export function formatMonthAndTime(milliseconds: number) {
   const hour = String(time.getHours()).padStart(2, "0");
   return `${currentMonth.slice(0, 3)} ${currentDate},${hour}:00 `;
 }
+
+export const formatDate = (dateString: string): string => {
+  const date = new Date(dateString);
+
+  // Extract year, month, and day, ensuring month and day are two digits
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are zero-indexed
+  const day = String(date.getDate()).padStart(2, "0");
+
+  return `${year}.${month}.${day}`;
+};
+
+export function convertDateFormat(dateStr: any) {
+  if (!dateStr || !/^\d{2}-\d{2}-\d{2}$/.test(dateStr)) {
+    throw new Error("Invalid date format. Please use MM-DD-YY.");
+  }
+  const [month, day] = dateStr.split("-");
+  return `${day}-${month}-2024`;
+}
+
+export function convertDate(inputDate: any) {
+  const parts = inputDate.split(/T|-/); // Split by 'T' or '-'
+
+  return `${parts[1]}-${parts[2]}-${parts[3]}`;
+}
+export function calculateDifference(
+  currentPrice: number,
+  purchasePrice: number
+): number | string {
+  if ((currentPrice - purchasePrice).toFixed(2) == "Infinity") {
+    return 0.0;
+  }
+
+  return (currentPrice - purchasePrice).toFixed(2);
+}

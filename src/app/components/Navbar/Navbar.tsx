@@ -32,7 +32,7 @@ const Navbar = () => {
   useHandleClickOutside(ref, closeDropdown);
 
   return (
-    <div className="w-screen bg-lightBg dark:bg-darkBg dark:text-lightText text-purpleText shadow-xl py-2">
+    <div className="w-screen bg-lightBg dark:bg-darkBg dark:text-lightText text-purpleText shadow-xl py-2 z-30">
       <div className="flex justify-between items-center max-w-[85%] h-[8vh] bg-lightBg dark:bg-darkBg dark:text-lightText text-purpleText w-screen m-auto">
         <div className="flex gap-20">
           <div className="flex justify-center items-center">

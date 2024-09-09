@@ -37,7 +37,7 @@ const MarketDataBar = () => {
   return (
     <>
       {isSuccess && (
-        <div className="dark:bg-darkPurple bg-lightPurple text-lightText h-[6vh] flex justify-center items-center gap-10 text-sm">
+        <div className="dark:bg-darkPurple bg-lightPurple text-lightText h-[6vh] flex justify-center items-center gap-10 text-sm z-30">
           <div className="flex items-center justify-center gap-2">
             <span>
               <CoinIcon />
