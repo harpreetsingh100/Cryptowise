@@ -2,12 +2,25 @@ import { useAppSelector } from "@/lib/hooks";
 import Image from "next/image";
 import React from "react";
 
-const DynamicCurrencyButton = () => {
+interface DynamicCurrencyButtonProps {
+  width?: number;
+  height?: number;
+}
+
+const DynamicCurrencyButton = ({
+  width = 20,
+  height = 10,
+}: DynamicCurrencyButtonProps) => {
   const { currencySymbol } = useAppSelector((store) => store.currency);
   return (
     <div>
       {currencySymbol === "BTC" && (
-        <Image src="/bitcoin.webp" alt="bitcoin image" width={20} height={10} />
+        <Image
+          src="/bitcoin.webp"
+          alt="bitcoin image"
+          width={width}
+          height={height}
+        />
       )}
       {currencySymbol === "ETH" && (
         <Image

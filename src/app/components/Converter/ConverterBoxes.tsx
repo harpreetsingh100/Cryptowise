@@ -34,14 +34,14 @@ const ConverterBoxes = () => {
       setInputRight(
         (
           (inputLeft * coinOnePrice?.[currencyType?.toLowerCase()]) /
-          coinTwoPrice[currencyType?.toLowerCase()]
+          coinTwoPrice?.[currencyType?.toLowerCase()]
         ).toFixed(2)
       );
     } else {
       setInputLeft(
         (
           (inputRight * coinTwoPrice?.[currencyType?.toLowerCase()]) /
-          coinOnePrice[currencyType?.toLowerCase()]
+          coinOnePrice?.[currencyType?.toLowerCase()]
         ).toFixed(2)
       );
     }

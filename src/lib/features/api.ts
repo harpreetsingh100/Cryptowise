@@ -19,6 +19,17 @@ export const api = createApi({
     getSearchQueryData: builder.query({
       query: (searchQuery) => `search?query=${searchQuery}`,
     }),
+    getCoinData: builder.query({
+      query: ({ currencyType, coinName }) =>
+        `/coins/markets?vs_currency=${currencyType}&ids=${coinName}&order=market_cap_desc&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d`,
+    }),
+    getHistoryDateCoinDetail: builder.query({
+      query: ({ id, date }) => `/coins/${id}/history?date=${date}`,
+    }),
+    getOneCoinDetail: builder.query({
+      query: (query) =>
+        `coins/${query}?localization=false&tickers=false&market_data=true&community_data=true&developer_data=false&sparkline=false&`,
+    }),
   }),
 });
 export const {
@@ -27,4 +38,7 @@ export const {
   useGetChartCoinDataQuery,
   useGetCoinTableListQuery,
   useGetSearchQueryDataQuery,
+  useGetCoinDataQuery,
+  useGetHistoryDateCoinDetailQuery,
+  useGetOneCoinDetailQuery,
 } = api;
