@@ -2,7 +2,7 @@ import React from "react";
 
 const DaysButtons = ({ days, setDays }: { days: number; setDays: any }) => {
   return (
-    <>
+    <div className="w-auto">
       <button
         className={`${
           days === 1
@@ -57,7 +57,7 @@ const DaysButtons = ({ days, setDays }: { days: number; setDays: any }) => {
         onClick={() => setDays(365)}>
         1Y
       </button>
-    </>
+    </div>
   );
 };
 
