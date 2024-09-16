@@ -84,8 +84,8 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-        <div className="flex gap-3">
-          <div className="relative">
+        <div className="flex gap-3 z-50">
+          <div className="relative z-50">
             <SearchBar />
           </div>
           <div className="bg-[#ebebfd] rounded-lg h-10 px-3 dark:bg-[#191925] w-[100px] flex justify-around items-center cursor-pointer relative border-[1px] border-[#6B7280]">

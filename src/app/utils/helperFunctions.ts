@@ -1,3 +1,4 @@
+import { toast } from "sonner";
 export function formatNumber(marketCap: number | string) {
   const trillion = 1e12;
   const billion = 1e9;
@@ -253,3 +254,28 @@ export function calculateDifference(
 
   return (currentPrice - purchasePrice).toFixed(2);
 }
+
+export function calculateSupplyPercentage(
+  circulatingSupply: number | undefined,
+  maxSupply: number | undefined
+): number | undefined {
+  if (circulatingSupply && maxSupply && maxSupply !== 0) {
+    return (circulatingSupply / maxSupply) * 100;
+  }
+  return undefined;
+}
+
+export function changeDateType(dateString: string): string {
+  const date = new Date(dateString);
+  const formattedDate = date.toUTCString();
+  return formattedDate;
+}
+
+export const handleCopy = async (text: string) => {
+  try {
+    await navigator.clipboard.writeText(text);
+    toast.success("Link Copied successfully");
+  } catch (err) {
+    console.error("Failed to copy text:", err);
+  }
+};

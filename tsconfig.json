@@ -26,7 +26,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/svg/Logo.tsx"
+    "src/svg/Logo.tsx",
+    "src/app/coinDetail/[coinName]"
   ],
   "exclude": ["node_modules"]
 }

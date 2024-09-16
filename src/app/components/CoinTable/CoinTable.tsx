@@ -8,6 +8,7 @@ import { useAppSelector } from "@/lib/hooks";
 import CoinInfoItem from "./CoinInfoItem";
 import { ThreeDots } from "react-loader-spinner";
 import { useTheme } from "next-themes";
+import Link from "next/link";
 
 const CoinTable = () => {
   const { currencyType } = useAppSelector((state) => state.currency);
@@ -39,7 +40,7 @@ const CoinTable = () => {
         next={fetchMoreData}
         hasMore={true}
         loader={
-          <p className="flex justify-center items-center">
+          <div className="flex justify-center items-center">
             <ThreeDots
               visible={true}
               height="80"
@@ -50,10 +51,12 @@ const CoinTable = () => {
               wrapperStyle={{}}
               wrapperClass=""
             />
-          </p>
+          </div>
         }>
         {coins.map((coin, i) => (
-          <CoinInfoItem key={coin.id} coin={coin} index={i} />
+          <Link href={`/coins/${coin?.id?.toLowerCase()}`} key={coin.id}>
+            <CoinInfoItem coin={coin} index={i} />
+          </Link>
         ))}
       </InfiniteScroll>
     </div>

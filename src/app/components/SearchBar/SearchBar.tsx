@@ -1,9 +1,11 @@
+"use client";
+
 import { useGetSearchQueryDataQuery } from "@/lib/features/api";
 import SearchIcon from "@/svg/SearchIcon";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useDebounce } from "../../../lib/hooks/useDebounce";
 import Link from "next/link";
-
+import { useHandleClickOutside } from "@/lib/hooks/useHandleClickOutside";
 const SearchBar = () => {
   const [searchValue, setSearchValue] = useState("");
   const debouncedSearchValue = useDebounce(searchValue, 400);
@@ -11,8 +13,15 @@ const SearchBar = () => {
   const { data, isLoading, error } =
     useGetSearchQueryDataQuery(debouncedSearchValue);
 
+  const ref = useRef<HTMLDivElement>(null);
+  const handleClickOutside = () => {
+    setShowSearchBar(false);
+  };
+
+  useHandleClickOutside(ref, handleClickOutside);
+
   return (
-    <div className="relative">
+    <div className="relative z-50" ref={ref}>
       <input
         type="text"
         className="w-64 bg-[#ebebfd] rounded-lg h-10 pl-10 dark:bg-[#191925] outline-none border-[#6B7280] border-[1px]"
@@ -20,9 +29,6 @@ const SearchBar = () => {
         onChange={(e) => setSearchValue(e.target.value)}
         onFocus={() => {
           setShowSearchBar(true);
-        }}
-        onBlur={() => {
-          setShowSearchBar(false);
         }}
       />
       <div className="absolute left-3  top-[11px] w-4">
@@ -40,10 +46,11 @@ const SearchBar = () => {
             data?.coins.map((coin: any) => {
               return (
                 <Link
-                  href="/portfolio"
-                  key={coin.id}
+                  href={`/coins/${coin?.id?.toLowerCase()}`}
+                  passHref
+                  key={coin?.id}
                   className="ml-10 cursor-pointer hover:text-[#6161D6]">
-                  {coin.name}
+                  {coin?.name}
                 </Link>
               );
             })}
