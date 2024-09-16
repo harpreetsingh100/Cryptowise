@@ -7,6 +7,7 @@ import PortfolioPortal from "./PortfolioPortal";
 import MarketDataBar from "../Navbar/MarketDataBar";
 import PortfolioCoinCard from "./PortfolioCoinCard";
 import PortfolioDeletePortal from "./PortfolioDeletePortal";
+import CoinInfo from "../CoinInfo/CoinInfo";
 
 const Portfolio = () => {
   const [portfolioCoinList, setPortfolioCoinList] = useState<any>([]);

@@ -28,7 +28,7 @@ export const api = createApi({
     }),
     getOneCoinDetail: builder.query({
       query: (query) =>
-        `coins/${query}?localization=false&tickers=false&market_data=true&community_data=true&developer_data=false&sparkline=false&`,
+        `coins/${query}?localization=false&tickers=false&market_data=true&community_data=true&developer_data=false&sparkline=false`,
     }),
   }),
 });
