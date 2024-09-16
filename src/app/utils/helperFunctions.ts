@@ -276,6 +276,6 @@ export const handleCopy = async (text: string) => {
     await navigator.clipboard.writeText(text);
     toast.success("Link Copied successfully");
   } catch (err) {
-    console.error("Failed to copy text:", err);
+    toast.error("Failed to copy text");
   }
 };
