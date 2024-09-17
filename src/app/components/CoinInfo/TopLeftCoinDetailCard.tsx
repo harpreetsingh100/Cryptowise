@@ -9,7 +9,7 @@ import { RiArrowDownSFill, RiArrowUpSFill } from "react-icons/ri";
 import { IoCopyOutline } from "react-icons/io5";
 import { Toaster } from "sonner";
 
-interface TopLeftCoinDetailCard {
+interface TopLeftCoinDetailCardProps {
   imgUrl: string;
   coinName: string;
   coinSymbol: string;
@@ -35,7 +35,7 @@ const TopLeftCoinDetailCard = ({
   allTimeLowMoney,
   allTimeLowDate,
   allTimeHighDate,
-}: TopLeftCoinDetailCard) => {
+}: TopLeftCoinDetailCardProps) => {
   return (
     <div className="w-[45%] h-full bg-[#FFFFFF] dark:bg-[#1E1932] rounded-xl p-8 shadow-xl">
       <Toaster position="top-right" richColors />
