@@ -12,10 +12,11 @@ import CoinInfoBulletPoint from "./CoinInfoBulletPoint";
 import { useTheme } from "next-themes";
 import TopLeftCoinDetailCard from "./TopLeftCoinDetailCard";
 import DescriptionDetailCard from "./DescriptionDetailCard";
+import SkeletonLoader from "../SkeletonLoader";
 
 const CoinInfo = ({ coinName }: { coinName: string }) => {
   const { currencyType } = useAppSelector((state: RootState) => state.currency);
-  const { data } = useGetOneCoinDetailQuery(coinName);
+  const { data, isLoading, isError } = useGetOneCoinDetailQuery(coinName);
   const { theme } = useTheme();
 
   const allTimeHighDate =
@@ -53,12 +54,16 @@ const CoinInfo = ({ coinName }: { coinName: string }) => {
           allTimeLowMoney={allTimeLowMoney}
           allTimeLowDate={allTimeLowDate}
           allTimeHighDate={allTimeHighDate}
+          isLoading={isLoading}
+          isError={isError}
         />
         <DescriptionDetailCard
           description={data?.description?.en}
           link1={data?.links?.blockchain_site[0]}
           link2={data?.links?.blockchain_site[1]}
           link3={data?.links?.blockchain_site[2]}
+          isLoading={isLoading}
+          isError={isError}
         />
       </div>
       <div className="border-1 border-white my-8">
@@ -71,6 +76,8 @@ const CoinInfo = ({ coinName }: { coinName: string }) => {
             data={addCommas(
               data?.market_data?.total_volume[currencyType.toLowerCase()]
             )}
+            isLoading={isLoading}
+            isError={isError}
           />
           <CoinInfoBulletPoint
             heading="Volume 24h"
@@ -81,6 +88,8 @@ const CoinInfo = ({ coinName }: { coinName: string }) => {
                 ]
               ).toFixed(0)
             )}
+            isLoading={isLoading}
+            isError={isError}
           />
           <CoinInfoBulletPoint
             heading="Volume/Market"
@@ -88,6 +97,8 @@ const CoinInfo = ({ coinName }: { coinName: string }) => {
               data?.market_data.total_volume?.[currencyType.toLowerCase()] /
               data?.market_data?.market_cap?.[currencyType.toLowerCase()]
             ).toFixed(5)}
+            isLoading={isLoading}
+            isError={isError}
           />
         </div>
         <div className=" w-[49%] bg-[#FFFFFF] dark:bg-[#1E1932] flex flex-col justify-between p-6 rounded-xl shadow-xl">
@@ -98,32 +109,50 @@ const CoinInfo = ({ coinName }: { coinName: string }) => {
                 ? addCommas(data?.market_data?.max_supply)
                 : "Not Available"
             }
+            isLoading={isLoading}
+            isError={isError}
           />
           <CoinInfoBulletPoint
             heading="Circulating Supply"
             data={addCommas(
               Math.abs(data?.market_data?.circulating_supply).toFixed(0)
             )}
+            isLoading={isLoading}
+            isError={isError}
           />
           <div>
             <div className="flex justify-between w-full">
-              <span>
-                {calculateSupplyPercentage(
-                  data?.market_data?.circulating_supply,
-                  data?.market_data?.max_supply
-                )?.toFixed(2) + "%"}
-              </span>
-              <span>{(100 - supplyPercentage).toFixed(2)}</span>
+              {supplyPercentage && (
+                <div className="flex justify-between w-full">
+                  <span>
+                    {data?.market_data?.circulating_supply &&
+                      calculateSupplyPercentage(
+                        data?.market_data?.circulating_supply,
+                        data?.market_data?.max_supply
+                      )?.toFixed(2) + "%"}
+                  </span>
+                  <span>
+                    {supplyPercentage && (100 - supplyPercentage).toFixed(2)}
+                  </span>
+                </div>
+              )}
             </div>
             <div className="mt-2">
-              <Line
-                className="rounded-xl"
-                percent={supplyPercentage}
-                strokeWidth={2}
-                strokeColor="#F5AC37"
-                trailWidth={10}
-                trailColor={theme === "dark" ? "#745439" : "#FCDEB4"}
-              />
+              {isLoading && (
+                <div className="w-full h-6">
+                  <SkeletonLoader />
+                </div>
+              )}
+              {!isLoading && !isError && (
+                <Line
+                  className="rounded-xl"
+                  percent={supplyPercentage}
+                  strokeWidth={2}
+                  strokeColor="#F5AC37"
+                  trailWidth={10}
+                  trailColor={theme === "dark" ? "#745439" : "#FCDEB4"}
+                />
+              )}
             </div>
           </div>
         </div>
@@ -136,6 +165,8 @@ const CoinInfo = ({ coinName }: { coinName: string }) => {
               2
             )
           )}
+          isLoading={isLoading}
+          isError={isError}
         />
         <CoinInfoBulletPoint
           heading="Fully Deluted Valuation"
@@ -144,6 +175,8 @@ const CoinInfo = ({ coinName }: { coinName: string }) => {
               currencyType.toLowerCase()
             ].toFixed(2)
           )}
+          isLoading={isLoading}
+          isError={isError}
         />
       </div>
     </div>

@@ -15,7 +15,7 @@ const CoinTable = () => {
   const [page, setPage] = useState(1);
   const [coins, setCoins] = useState<any[]>([]);
 
-  const { data, error } = useGetCoinTableListQuery({
+  const { data, error, isError } = useGetCoinTableListQuery({
     currency: currencyType,
     page,
     limit: 50,
@@ -24,7 +24,7 @@ const CoinTable = () => {
 
   useEffect(() => {
     if (data && Array.isArray(data) && !error) {
-      setCoins(data);
+      setCoins((prevCoins) => [...prevCoins, ...data]);
     }
   }, [data, error]);
 
@@ -40,18 +40,20 @@ const CoinTable = () => {
         next={fetchMoreData}
         hasMore={true}
         loader={
-          <div className="flex justify-center items-center">
-            <ThreeDots
-              visible={true}
-              height="80"
-              width="80"
-              color={`${theme === "light" ? "#A9AAEC" : "#6161D6"}`}
-              radius="9"
-              ariaLabel="three-dots-loading"
-              wrapperStyle={{}}
-              wrapperClass=""
-            />
-          </div>
+          !isError && (
+            <div className="flex justify-center items-center">
+              <ThreeDots
+                visible={true}
+                height="80"
+                width="80"
+                color={`${theme === "light" ? "#A9AAEC" : "#6161D6"}`}
+                radius="9"
+                ariaLabel="three-dots-loading"
+                wrapperStyle={{}}
+                wrapperClass=""
+              />
+            </div>
+          )
         }>
         {coins.map((coin, i) => (
           <Link href={`/coins/${coin?.id?.toLowerCase()}`} key={coin.id}>
@@ -59,6 +61,11 @@ const CoinTable = () => {
           </Link>
         ))}
       </InfiniteScroll>
+      {isError && (
+        <div className="flex justify-center items-center w-full mt-6">
+          <h2 className="text-xl">Failed to fetch Data</h2>
+        </div>
+      )}
     </div>
   );
 };

@@ -9,6 +9,7 @@ import { RiArrowDownSFill } from "react-icons/ri";
 import { useGetCoinDataQuery } from "@/lib/features/api";
 import Image from "next/image";
 import { capitalizeFirstLetter } from "@/app/utils/helperFunctions";
+import SkeletonLoader from "../SkeletonLoader";
 
 interface CoinData {
   amount: number;
@@ -116,7 +117,7 @@ const PortfolioPortal = ({
   };
 
   return (
-    <div className="fixed inset-0">
+    <div className="fixed inset-0 z-50">
       <div className="h-screen w-screen absolute top-0 left-0 bg-[rgba(43,38,86,0.7)]">
         <div className="relative h-screen w-screen">
           <div className="w-[60%] h-1/2 py-10 px-12 z-40 rounded-xl inset-0 dark:bg-[#13121A] bg-white absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] transform ">
@@ -148,7 +149,9 @@ const PortfolioPortal = ({
                       height={10}
                     />
                   ) : (
-                    <div></div>
+                    <div className="w-8 h-8">
+                      <SkeletonLoader radius="2xl" />
+                    </div>
                   )}
                 </div>
               </div>

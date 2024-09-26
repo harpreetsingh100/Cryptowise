@@ -7,6 +7,8 @@ import { useAppSelector } from "@/lib/hooks";
 import { PiArrowsDownUp } from "react-icons/pi";
 import ConverterChart from "../Charts/ConverterChart";
 import DaysButtons from "../DaysButtons";
+import { Circles } from "react-loader-spinner";
+import { useTheme } from "next-themes";
 
 const ConverterBoxes = () => {
   const [coinOne, setCoinOne] = useState<string>("bitcoin");
@@ -19,11 +21,29 @@ const ConverterBoxes = () => {
   const [isRightCoinListVisible, setIsRightCoinListVisible] =
     useState<boolean>(false);
   const [days, setDays] = useState(1);
-  const { data: coinOneData } = useGetChartCoinDataQuery(coinOne);
-  const { data: coinTwoData } = useGetChartCoinDataQuery(coinTwo);
+  const {
+    data: coinOneData,
+    isSuccess: isSuccessCoinOne,
+    isLoading: isLoadingCoinOne,
+    isUninitialized: isUninitializedCoinOne,
+    isError: isErrorCoinOne,
+  } = useGetChartCoinDataQuery(coinOne);
+  const {
+    data: coinTwoData,
+    isSuccess: isSuccessCoinTwo,
+    isLoading: isLoadingCoinTwo,
+    isUninitialized: isUninitializedCoinTwo,
+    isError: isErrorCoinTwo,
+  } = useGetChartCoinDataQuery(coinTwo);
   const { currencyType } = useAppSelector((state) => state.currency);
+  const { theme } = useTheme();
 
-  const { data: chartDataOfCoin } = useGetChartCoinDataQuery(
+  const {
+    data: chartDataOfCoin,
+    isSuccess: isSuccessChartData,
+    isError: isErrorChartData,
+    isLoading: isLoadingChartData,
+  } = useGetChartCoinDataQuery(
     `${coinOne}/market_chart?vs_currency=${currencyType}&days=${days}`
   );
   const coinOnePrice = coinOneData?.market_data.current_price;
@@ -68,6 +88,10 @@ const ConverterBoxes = () => {
           isCoinListVisible={isLeftCoinListVisible}
           setIsCoinListVisible={setIsLeftCoinListVisible}
           setCoin={setCoinOne}
+          isLoading={isLoadingCoinOne}
+          isUninitialized={isUninitializedCoinOne}
+          isError={isErrorCoinOne}
+          isSuccess={isSuccessCoinOne}
         />
         <ConverterBox
           sell={false}
@@ -79,6 +103,10 @@ const ConverterBoxes = () => {
           isCoinListVisible={isRightCoinListVisible}
           setIsCoinListVisible={setIsRightCoinListVisible}
           setCoin={setCoinTwo}
+          isLoading={isLoadingCoinTwo}
+          isUninitialized={isUninitializedCoinTwo}
+          isError={isErrorCoinTwo}
+          isSuccess={isSuccessCoinTwo}
         />
         <div className="absolute inset-0 flex items-center justify-center">
           <PiArrowsDownUp
@@ -93,16 +121,40 @@ const ConverterBoxes = () => {
           />
         </div>
       </div>
-      <div className="mt-6">
-        <ConverterChart
-          chartDataOfCoin={chartDataOfCoin}
-          days={days}
-          coinOneName={coinOne}
-          coinTwoName={coinTwo}
-        />
+      <div className="my-6">
+        {isErrorChartData && (
+          <div className="h-[400px] bg-white dark:bg-[#191934] py-6 rounded-xl my-6 flex justify-center items-center">
+            <h2 className="text-2xl">Failed to fetch data</h2>
+          </div>
+        )}
+        {isLoadingChartData && (
+          <div className="h-[400px] bg-white dark:bg-[#191934] py-6 rounded-xl my-6 flex justify-center items-center">
+            <Circles
+              height="100"
+              width="100"
+              color={`${theme === "light" ? "#A9AAEC" : "#6161D6"}`}
+              ariaLabel="circles-loading"
+              wrapperStyle={{}}
+              wrapperClass=""
+              visible={true}
+            />
+          </div>
+        )}
+        {isSuccessChartData && (
+          <ConverterChart
+            chartDataOfCoin={chartDataOfCoin}
+            days={days}
+            coinOneName={coinOne}
+            coinTwoName={coinTwo}
+          />
+        )}
       </div>
-      <div className="w-[315px] flex gap-2 bg-[#E3E5FB] dark:bg-[#232337] rounded-lg mt-6 text-black dark:text-white">
-        <DaysButtons days={days} setDays={setDays} />
+      <div>
+        {isSuccessChartData && (
+          <div className="w-[315px] flex gap-2 bg-[#E3E5FB] dark:bg-[#232337] rounded-lg mt-6 text-black dark:text-white">
+            <DaysButtons days={days} setDays={setDays} />
+          </div>
+        )}
       </div>
     </div>
   );
