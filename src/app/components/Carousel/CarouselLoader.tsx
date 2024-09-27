@@ -6,9 +6,9 @@ const CarouselLoader = () => {
     <div className="w-full flex justify-between items-center gap-[2%]">
       {Array(4)
         .fill(null)
-        .map(() => (
+        .map((i) => (
           <div
-            key={Math.random()}
+            key={i}
             className="rounded-lg h-20 w-[24.5%] dark:bg-[#191926] flex justify-between bg-white">
             <div className="w-[30%] flex justify-center items-center h-full">
               <SkeletonLoader width={10} height={10} radius="2xl" />
