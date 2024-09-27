@@ -36,3 +36,7 @@
   width: 35%;
   height: 35%;
 }
+
+.skeleton {
+  animation: skeleton-loading 0.5s linear infinite alternate;
+}

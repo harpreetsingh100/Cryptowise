@@ -10,8 +10,7 @@ const SearchBar = () => {
   const [searchValue, setSearchValue] = useState("");
   const debouncedSearchValue = useDebounce(searchValue, 400);
   const [showSearchBar, setShowSearchBar] = useState<boolean>(false);
-  const { data, isLoading, error } =
-    useGetSearchQueryDataQuery(debouncedSearchValue);
+  const { data, error } = useGetSearchQueryDataQuery(debouncedSearchValue);
 
   const ref = useRef<HTMLDivElement>(null);
   const handleClickOutside = () => {
@@ -34,7 +33,6 @@ const SearchBar = () => {
       <div className="absolute left-3  top-[11px] w-4">
         <SearchIcon />
       </div>
-      {isLoading && <div>Loading</div>}
       {showSearchBar && (
         <div
           className={`${
@@ -54,8 +52,12 @@ const SearchBar = () => {
                 </Link>
               );
             })}
-          {isLoading && <div>Loading</div>}
-          {error && <div className="text-center">Something went wrong</div>}
+          {error && (
+            <div className=" h-full w-full flex justify-center items-center flex-col">
+              <h2 className="text-lg">Something</h2>
+              <h2 className="text-lg">went wrong </h2>
+            </div>
+          )}
         </div>
       )}
     </div>

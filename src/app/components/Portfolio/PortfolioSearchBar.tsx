@@ -64,7 +64,6 @@ const PortfolioSearchBar = ({
         }}>
         <GiCancel />
       </div>
-      {isLoading && <div>Loading</div>}
       {showPortfolioSearchBar && (
         <div
           ref={ref}
@@ -94,8 +93,16 @@ const PortfolioSearchBar = ({
                 </div>
               );
             })}
-          {isLoading && <div>Loading</div>}
-          {error && <div className="text-center">Something went wrong</div>}
+          {isLoading && (
+            <div className="flex justify-center items-center text-center">
+              Loading
+            </div>
+          )}
+          {error && (
+            <div className="flex justify-center items-center text-center">
+              Something went wrong
+            </div>
+          )}
         </div>
       )}
     </div>

@@ -39,7 +39,7 @@ const Portfolio = () => {
 
   return (
     <div>
-      <div className=" w-full relative bg-[#F3F5F9] dark:bg-black h-auto min-h-screen max-h-auto">
+      <div className=" w-full relative bg-[#F3F5F9] dark:bg-black h-auto min-h-screen max-h-auto pb-8">
         <MarketDataBar />
         <Navbar />
         <div className="max-w-[85%] m-auto mt-4">

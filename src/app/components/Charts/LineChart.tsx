@@ -53,7 +53,7 @@ const LineChart = ({
   const { currencyType } = useAppSelector((state) => state.currency);
 
   return (
-    <div className="bg-white dark:bg-[#191934] py-6 rounded-xl">
+    <div className="bg-white dark:bg-[#191934] py-6 rounded-xl h-[420px]">
       <div className="bg-white dark:bg-[#191934] text-white p-6">
         <div className="text-black dark:text-white">
           {coinOneName && coinTwoName
