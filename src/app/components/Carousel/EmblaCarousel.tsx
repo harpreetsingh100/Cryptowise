@@ -17,7 +17,11 @@ import {
   addCommas,
   roundToTwoDecimals,
 } from "@/app/utils/helperFunctions";
-import { setSelectedCoin } from "@/lib/features/chartSlice";
+import {
+  setSelectedCoin,
+  setSelectedCoinThree,
+  setSelectedCoinTwo,
+} from "@/lib/features/chartSlice";
 import CarouselLoader from "./CarouselLoader";
 
 type PropType = {
@@ -36,6 +40,8 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
   const { options } = props;
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
   const { selectedCoin } = useAppSelector((state) => state.chart);
+  const { selectedCoinTwo } = useAppSelector((state) => state.chart);
+  const { selectedCoinThree } = useAppSelector((state) => state.chart);
   const { currencyType } = useAppSelector((state: RootState) => state.currency);
   const { data, isLoading, isUninitialized, isError } =
     useGetSearchDataQuery(currencyType);
@@ -48,7 +54,19 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
   } = usePrevNextButtons(emblaApi);
 
   const handleChangeSelectedCoin = (coinId: string) => {
-    dispatch(setSelectedCoin(coinId));
+    if (selectedCoin === coinId) {
+      dispatch(setSelectedCoin(null));
+    } else if (selectedCoinTwo === coinId) {
+      dispatch(setSelectedCoinTwo(null));
+    } else if (selectedCoinThree === coinId) {
+      dispatch(setSelectedCoinThree(null));
+    } else if (!selectedCoin) {
+      dispatch(setSelectedCoin(coinId));
+    } else if (!selectedCoinTwo) {
+      dispatch(setSelectedCoinTwo(coinId));
+    } else if (!selectedCoinThree) {
+      dispatch(setSelectedCoinThree(coinId));
+    }
   };
 
   return (
@@ -66,7 +84,9 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                   <div
                     key={coin.id}
                     className={`${
-                      selectedCoin == coin.id
+                      selectedCoin == coin.id ||
+                      selectedCoinTwo == coin.id ||
+                      selectedCoinThree == coin.id
                         ? "bg-[#A9AAEC] dark:bg-[#39397C] embla__slide flex-none w-[24.3%] rounded-xl h-20  flex relative mx-[1px] cursor-pointer"
                         : "bg-lightBg dark:bg-[#191926] embla__slide flex-none w-[24%] rounded-xl h-20  flex relative mx-[1px] cursor-pointer"
                     }`}

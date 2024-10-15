@@ -17,8 +17,8 @@ const ConverterChart = ({
       <LineChart
         chartDataOfCoin={chartDataOfCoin}
         days={days}
-        coinOneName={coinOneName}
-        coinTwoName={coinTwoName}
+        converterCoinOneName={coinOneName}
+        converterCoinTwoName={coinTwoName}
       />
     </div>
   );
