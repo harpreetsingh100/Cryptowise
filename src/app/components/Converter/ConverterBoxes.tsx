@@ -122,7 +122,7 @@ const ConverterBoxes = () => {
         </div>
       </div>
       <div className="my-6">
-        {isErrorChartData && (
+        {(isErrorChartData || isErrorCoinOne || isErrorCoinTwo) && (
           <div className="h-[400px] bg-white dark:bg-[#191934] py-6 rounded-xl my-6 flex justify-center items-center">
             <h2 className="text-2xl">Failed to fetch data</h2>
           </div>
@@ -140,7 +140,7 @@ const ConverterBoxes = () => {
             />
           </div>
         )}
-        {isSuccessChartData && (
+        {isSuccessChartData && !isErrorChartData && (
           <ConverterChart
             chartDataOfCoin={chartDataOfCoin}
             days={days}
