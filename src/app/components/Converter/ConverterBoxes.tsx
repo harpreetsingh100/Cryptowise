@@ -39,31 +39,22 @@ const ConverterBoxes = () => {
   const { theme } = useTheme();
 
   const {
-    data: chartDataOfCoin,
     isSuccess: isSuccessChartData,
     isError: isErrorChartData,
     isLoading: isLoadingChartData,
   } = useGetChartCoinDataQuery(
     `${coinOne}/market_chart?vs_currency=${currencyType}&days=${days}`
   );
-  const coinOnePrice = coinOneData?.market_data.current_price;
-  const coinTwoPrice = coinOneData?.market_data.current_price;
+  const coinOnePrice =
+    coinOneData?.market_data.current_price[currencyType?.toLowerCase()];
+  const coinTwoPrice =
+    coinTwoData?.market_data.current_price[currencyType?.toLowerCase()];
 
   useEffect(() => {
     if (inputName === "input1") {
-      setInputRight(
-        (
-          (inputLeft * coinOnePrice?.[currencyType?.toLowerCase()]) /
-          coinTwoPrice?.[currencyType?.toLowerCase()]
-        ).toFixed(2)
-      );
+      setInputRight(((inputLeft * coinOnePrice) / coinTwoPrice).toFixed(2));
     } else {
-      setInputLeft(
-        (
-          (inputRight * coinTwoPrice?.[currencyType?.toLowerCase()]) /
-          coinOnePrice?.[currencyType?.toLowerCase()]
-        ).toFixed(2)
-      );
+      setInputLeft(((inputRight * coinTwoPrice) / coinOnePrice).toFixed(2));
     }
   }, [
     inputLeft,
@@ -140,14 +131,12 @@ const ConverterBoxes = () => {
             />
           </div>
         )}
-        {isSuccessChartData && !isErrorChartData && (
-          <ConverterChart
-            chartDataOfCoin={chartDataOfCoin}
-            days={days}
-            coinOneName={coinOne}
-            coinTwoName={coinTwo}
-          />
-        )}
+        {isSuccessChartData &&
+          !isErrorChartData &&
+          !isErrorCoinOne &&
+          !isErrorCoinTwo && (
+            <ConverterChart days={days} coinOne={coinOne} coinTwo={coinTwo} />
+          )}
       </div>
       <div>
         {isSuccessChartData && (

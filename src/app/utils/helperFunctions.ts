@@ -45,6 +45,10 @@ export function formatNumber(marketCap: number | string) {
 
 export function capitalizeFirstLetter(word: string): string {
   if (!word) return word;
+  if (typeof word !== "string") {
+    alert("capitalizeFirstLetter expected a string but received:");
+    return "";
+  }
   return word.charAt(0).toUpperCase() + word.slice(1);
 }
 
@@ -142,14 +146,62 @@ export const chartOptions: any = {
   },
 };
 
+export function converterChartOptions(isMobile: boolean) {
+  const data = {
+    responsive: true,
+    maintainAspectRatio: false,
+    radius: 5,
+    hitRadius: 30,
+    hoverRadius: 12,
+    scales: {
+      y: {
+        display: false,
+        stacked: true,
+        ticks: {
+          display: false,
+        },
+        grid: {
+          display: false,
+          drawBorder: false,
+        },
+      },
+      x: {
+        display: true,
+        stacked: true,
+        ticks: {
+          maxTicksLimit: isMobile ? 6 : 7,
+          align: "inner",
+        },
+        beforeFit(axis: any) {
+          const labels = axis.chart.config._config.data.labels;
+          const length = labels.length - 1;
+          axis.ticks.push({
+            value: length,
+            label: labels[length],
+          });
+        },
+        grid: {
+          display: false,
+        },
+      },
+    },
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
+  };
+  return data;
+}
+
 export function chartData(
   chartLabels: any[],
   labelOne: string,
   labelTwo: string,
   labelThree: string,
   dataOne: any[],
-  dataTwo: any[],
-  dataThree: any[],
+  dataTwo?: any[],
+  dataThree?: any[],
   coinOneName?: string
 ) {
   const label = coinOneName
@@ -315,3 +367,50 @@ export const handleCopy = async (text: string) => {
     toast.error("Failed to copy text");
   }
 };
+
+export function converterChartData(
+  chartLabels: any[],
+  labelOne: string,
+  labelTwo: string,
+  dataOne: any[],
+  dataTwo: any[]
+) {
+  const data = {
+    labels: chartLabels,
+    datasets: [
+      {
+        label: labelOne,
+        data: dataOne,
+        borderColor: "#7878FA",
+        borderWidth: 3,
+        borderRadius: 3,
+        categoryPercentage: 0.75,
+        backgroundColor: (context: any) => {
+          const gradient = context.chart.ctx.createLinearGradient(0, 0, 0, 400);
+          gradient.addColorStop(0, "#7878FA");
+          gradient.addColorStop(0.65, "rgba(120, 120, 250, 0)");
+          return gradient;
+        },
+        pointRadius: 0,
+        fill: true,
+      },
+      {
+        label: labelTwo,
+        data: dataTwo,
+        borderColor: "#D878FA",
+        borderWidth: 3,
+        borderRadius: 3,
+        categoryPercentage: 0.75,
+        backgroundColor: (context: any) => {
+          const gradient = context.chart.ctx.createLinearGradient(0, 0, 0, 400);
+          gradient.addColorStop(0, "#D878FA");
+          gradient.addColorStop(0.65, "rgba(216, 120, 250, 0)");
+          return gradient;
+        },
+        pointRadius: 0,
+        fill: true,
+      },
+    ],
+  };
+  return data;
+}
