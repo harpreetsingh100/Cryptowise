@@ -89,7 +89,7 @@ const ConverterBox = ({
                         (prevCoinList: boolean) => !prevCoinList
                       );
                     }}>
-                    <h2 className="text-2xl ml-3 mt-2">
+                    <h2 className="text-2xl ml-3 mt-2 overflow-hidden text-ellipsis whitespace-nowrap w-60">
                       {data?.name}({data?.symbol.toUpperCase()})
                     </h2>
 

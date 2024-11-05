@@ -55,11 +55,15 @@ const CoinTable = () => {
             </div>
           )
         }>
-        {coins.map((coin, i) => (
-          <Link href={`/coins/${coin?.id?.toLowerCase()}`} key={coin.id}>
-            <CoinInfoItem coin={coin} index={i} />
-          </Link>
-        ))}
+        <div>
+          {coins.map((coin, i) => (
+            <div key={`${coin?.id}+${Math.random()}`}>
+              <Link href={`/coins/${coin?.id?.toLowerCase()}`}>
+                <CoinInfoItem coin={coin} index={i} />
+              </Link>
+            </div>
+          ))}
+        </div>
       </InfiniteScroll>
       {isError && (
         <div className="flex justify-center items-center w-full mt-6">

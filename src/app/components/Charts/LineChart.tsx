@@ -112,12 +112,18 @@ const LineChart = ({
               <div className="mr-4">
                 {selectedCoin ? (
                   <div className="flex items-center">
-                    <div className="h-5 w-6 bg-[#3D3D82] px-1 rounded-sm mr-2"></div>
-                    <span>{selectedCoin.toUpperCase()}</span>
-                    <span className="mx-1">{"- "}</span>
-                    <span className="flex ml-1">
+                    <div className="h-5 w-6 dark:bg-[#3D3D82] bg-[#7F7FFB] px-1 rounded-sm mr-2"></div>
+                    <span className="text-black dark:text-white">
+                      {selectedCoin.toUpperCase()}
+                    </span>
+                    <span className="mx-1 text-black dark:text-white">
+                      {"- "}
+                    </span>
+                    <span className="flex ml-1 text-black dark:text-white">
                       <DynamicCurrencyButton />
-                      <span className="ml-2">{coinPrice}</span>
+                      <span className="ml-2 text-black dark:text-white">
+                        {coinPrice}
+                      </span>
                     </span>
                   </div>
                 ) : (
@@ -128,11 +134,17 @@ const LineChart = ({
                 {selectedCoinTwo ? (
                   <div className="flex items-center">
                     <div className="h-5 w-6 bg-[#B165D2] px-1 rounded-sm mr-2"></div>
-                    <span>{selectedCoinTwo.toUpperCase()}</span>
-                    <span className="mx-1">{"- "}</span>
-                    <span className="flex ml-1">
+                    <span className="text-black dark:text-white">
+                      {selectedCoinTwo.toUpperCase()}
+                    </span>
+                    <span className="mx-1 text-black dark:text-white">
+                      {"- "}
+                    </span>
+                    <span className="flex ml-1 text-black dark:text-white">
                       <DynamicCurrencyButton />
-                      <span className="ml-2">{coinPriceTwo}</span>
+                      <span className="ml-2 text-black dark:text-white">
+                        {coinPriceTwo}
+                      </span>
                     </span>
                   </div>
                 ) : (
@@ -143,11 +155,17 @@ const LineChart = ({
                 {selectedCoinThree ? (
                   <div className="flex items-center">
                     <div className="h-5 w-6 bg-[#FF9D3D] px-1 rounded-sm mr-2"></div>
-                    <span>{selectedCoinThree.toUpperCase()}</span>
-                    <span className="mx-1">{"- "}</span>
-                    <span className="flex ml-1">
+                    <span className="text-black dark:text-white">
+                      {selectedCoinThree.toUpperCase()}
+                    </span>
+                    <span className="mx-1 text-black dark:text-white">
+                      {"- "}
+                    </span>
+                    <span className="flex ml-1 text-black dark:text-white">
                       <DynamicCurrencyButton />
-                      <span className="ml-2">{coinPriceThree}</span>
+                      <span className="ml-2 text-black dark:text-white">
+                        {coinPriceThree}
+                      </span>
                     </span>
                   </div>
                 ) : (
