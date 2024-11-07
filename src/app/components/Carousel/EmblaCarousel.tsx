@@ -104,7 +104,11 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                     <div className="w-[70%] flex flex-col items-start justify-center">
                       <div
                         className={`${
-                          selectedCoin == coin.id ? "text-white" : ""
+                          selectedCoin == coin?.id ||
+                          selectedCoinTwo == coin?.id ||
+                          selectedCoinThree == coin?.id
+                            ? "text-white"
+                            : ""
                         }`}>
                         <span>
                           {truncateString(capitalizeFirstLetter(coin.id), 15)}{" "}
@@ -114,13 +118,21 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                       <div className="dark:text-[#D1D1D1] text-[#42428B] flex">
                         <span
                           className={`${
-                            selectedCoin == coin.id ? "text-white" : ""
+                            selectedCoin == coin.id ||
+                            selectedCoinTwo == coin?.id ||
+                            selectedCoinThree == coin?.id
+                              ? "text-white"
+                              : ""
                           }`}>
                           {addCommas(coin.current_price.toFixed(2))}{" "}
                         </span>
                         <span
                           className={`${
-                            selectedCoin == coin.id ? "text-white ml-1" : "ml-1"
+                            selectedCoin == coin.id ||
+                            selectedCoinTwo == coin?.id ||
+                            selectedCoinThree == coin?.id
+                              ? "text-white ml-1"
+                              : "ml-1"
                           }`}>
                           {currencyType}
                         </span>

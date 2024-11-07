@@ -143,6 +143,21 @@ export const chartOptions: any = {
     legend: {
       display: false,
     },
+    crosshair: {
+      line: {
+        color: "#F66", // Color of crosshair line
+        width: 1, // Crosshair line width
+      },
+      sync: {
+        enabled: true, // Sync crosshairs across multiple charts
+        group: 1, // Define sync group
+        suppressTooltips: false,
+      },
+      zoom: {
+        enabled: true, // Enable zoom feature
+        mode: "x", // Zoom along x-axis
+      },
+    },
   },
 };
 
@@ -188,6 +203,21 @@ export function converterChartOptions(isMobile: boolean) {
     plugins: {
       legend: {
         display: false,
+      },
+      crosshair: {
+        line: {
+          color: "#F66", // Color of crosshair line
+          width: 1, // Crosshair line width
+        },
+        sync: {
+          enabled: true, // Sync crosshairs across multiple charts
+          group: 1, // Define sync group
+          suppressTooltips: false,
+        },
+        zoom: {
+          enabled: true, // Enable zoom feature
+          mode: "x", // Zoom along x-axis
+        },
       },
     },
   };

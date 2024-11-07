@@ -131,7 +131,7 @@ const TopLeftCoinDetailCard = ({
             </div>
             <div className="flex justify-between items-center text-2xl">
               <DynamicCurrencyButton />
-              <h2 className="text-2xl">{allTimeHighMoney}</h2>
+              <h2 className="text-2xl">{addCommas(allTimeHighMoney)}</h2>
             </div>
           </div>
           <div className="mt-2">
@@ -146,7 +146,7 @@ const TopLeftCoinDetailCard = ({
             </div>
             <div className="flex justify-between items-center text-2xl">
               <DynamicCurrencyButton />
-              <h2 className="text-2xl">{allTimeLowMoney}</h2>
+              <h2 className="text-2xl">{addCommas(allTimeLowMoney)}</h2>
             </div>
           </div>
           <div className="mt-2">

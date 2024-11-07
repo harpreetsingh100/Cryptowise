@@ -36,8 +36,12 @@ const DescriptionDetailCard = ({
                 : "h-[40%] flex gap-6  flex-wrap"
             }`}>
             {link1 && (
-              <button className="bg-[#FFFFFF] dark:bg-[#1E1932] px-4  rounded-lg flex items-center justify-center h-16 shadow-xl">
-                <a href={link1} target="_blank" rel="noopener noreferrer">
+              <button className="bg-[#FFFFFF] dark:bg-[#1E1932] px-4  rounded-lg flex items-center justify-center h-16 shadow-xl w-full">
+                <a
+                  href={link1}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="overflow-hidden text-ellipsis whitespace-nowrap w-full">
                   {link1}
                 </a>
                 <span className="ml-2" onClick={() => handleCopy(link1)}>
@@ -46,8 +50,12 @@ const DescriptionDetailCard = ({
               </button>
             )}
             {link2 && (
-              <button className="bg-[#FFFFFF] dark:bg-[#1E1932] px-4  rounded-lg flex items-center justify-center h-16 shadow-xl">
-                <a href={link2} target="_blank" rel="noopener noreferrer">
+              <button className="bg-[#FFFFFF] dark:bg-[#1E1932] px-4  rounded-lg flex items-center justify-center h-16 shadow-xl w-full">
+                <a
+                  href={link2}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="overflow-hidden text-ellipsis whitespace-nowrap w-full">
                   {link2}
                 </a>
                 <span className="ml-2" onClick={() => handleCopy(link2)}>
@@ -56,8 +64,12 @@ const DescriptionDetailCard = ({
               </button>
             )}
             {link3 && (
-              <button className="bg-[#FFFFFF] dark:bg-[#1E1932] px-4  rounded-lg flex items-center justify-center h-16 shadow-xl">
-                <a href={link3} target="_blank" rel="noopener noreferrer">
+              <button className="bg-[#FFFFFF] dark:bg-[#1E1932] px-4  rounded-lg flex items-center justify-center h-16 shadow-xl  w-full">
+                <a
+                  href={link3}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="overflow-hidden text-ellipsis whitespace-nowrap w-full">
                   {link3}
                 </a>
                 <span className="ml-2" onClick={() => handleCopy(link3)}>
