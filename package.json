@@ -12,7 +12,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.5",
     "@types/react-redux": "^7.1.33",
-    "chart.js": "^4.4.5",
+    "chart.js": "^4.4.6",
     "chartjs-plugin-crosshair": "^2.0.0",
     "dompurify": "^3.1.7",
     "embla-carousel-react": "^8.1.5",

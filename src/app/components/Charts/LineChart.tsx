@@ -8,8 +8,6 @@ import {
   Tooltip,
   Legend,
 } from "chart.js/auto";
-import CrosshairPlugin from "chartjs-plugin-crosshair";
-
 import { Line } from "react-chartjs-2";
 
 import {
@@ -30,8 +28,7 @@ ChartJS.register(
   LineElement,
   Title,
   Tooltip,
-  Legend,
-  CrosshairPlugin
+  Legend
 );
 
 const LineChart = ({

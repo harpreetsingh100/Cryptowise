@@ -1,5 +1,4 @@
 import React from "react";
-import CrosshairPlugin from "chartjs-plugin-crosshair";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -26,8 +25,7 @@ ChartJS.register(
   Title,
   Tooltip,
   Filler,
-  Legend,
-  CrosshairPlugin
+  Legend
 );
 
 const options: any = {
@@ -56,14 +54,14 @@ const options: any = {
         maxTicksLimit: 8,
         align: "inner",
       },
-      // beforeFit(axis: any) {
-      //   const labels = axis.chart.config._config.data.labels;
-      //   const length = labels.length - 1;
-      //   axis.ticks.push({
-      //     value: length,
-      //     label: labels[length],
-      //   });
-      // },
+      beforeFit(axis: any) {
+        const labels = axis.chart.config._config.data.labels;
+        const length = labels.length - 1;
+        axis.ticks.push({
+          value: length,
+          label: labels[length],
+        });
+      },
       grid: {
         display: false,
       },
@@ -87,21 +85,6 @@ const options: any = {
     },
     legend: {
       display: false,
-    },
-    crosshair: {
-      line: {
-        color: "#F66", // Color of crosshair line
-        width: 1, // Crosshair line width
-      },
-      sync: {
-        enabled: true, // Sync crosshairs across multiple charts
-        group: 1, // Define sync group
-        suppressTooltips: false,
-      },
-      zoom: {
-        enabled: true, // Enable zoom feature
-        mode: "x", // Zoom along x-axis
-      },
     },
   },
 };
