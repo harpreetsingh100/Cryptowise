@@ -1,9 +1,21 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-export const api = createApi({
-  baseQuery: fetchBaseQuery({ baseUrl: "https://api.coingecko.com/api/v3/" }),
+const apiKey = process.env.NEXT_PUBLIC_API_KEY || "";
+
+export const cryptoApp = createApi({
+  reducerPath: "cryptoApp",
+  baseQuery: fetchBaseQuery({
+    baseUrl:
+      "https://cors-anywhere.herokuapp.com/https://api.coingecko.com/api/v3/",
+    mode: "cors",
+    prepareHeaders: (headers) => {
+      headers.set("x-cg-demo-api-key", apiKey);
+      return headers;
+    },
+  }),
+
   endpoints: (builder) => ({
-    getMarketData: builder.query<any, any>({
+    getMarketData: builder.query<any, void>({
       query: () => "/global",
     }),
     getSearchData: builder.query({
@@ -32,6 +44,7 @@ export const api = createApi({
     }),
   }),
 });
+
 export const {
   useGetMarketDataQuery,
   useGetSearchDataQuery,
@@ -41,4 +54,4 @@ export const {
   useGetCoinDataQuery,
   useGetHistoryDateCoinDetailQuery,
   useGetOneCoinDetailQuery,
-} = api;
+} = cryptoApp;

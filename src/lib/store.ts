@@ -4,7 +4,6 @@ import {
   ThunkAction,
   Action,
 } from "@reduxjs/toolkit";
-import { api } from "../lib/features/api";
 import storage from "redux-persist/lib/storage";
 import {
   FLUSH,
@@ -18,6 +17,7 @@ import {
 } from "redux-persist";
 import currencyReducer from "../lib/features/currencySlice";
 import chartReducer from "./features/chartSlice";
+import { cryptoApp } from "./features/api";
 
 const reduxLogger = require("redux-logger");
 const logger = reduxLogger.createLogger();
@@ -29,7 +29,7 @@ const persistConfig = {
 };
 
 export const rootReducer: any = combineReducers({
-  [api.reducerPath]: api.reducer,
+  [cryptoApp.reducerPath]: cryptoApp.reducer,
   currency: currencyReducer,
   chart: chartReducer,
 });
@@ -43,7 +43,7 @@ export const makeStore = () => {
         serializableCheck: {
           ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
         },
-      }).concat(api.middleware, logger),
+      }).concat(cryptoApp.middleware, logger),
   });
 
   store.persistor = persistStore(store);

@@ -1,5 +1,6 @@
 import { handleCopy } from "@/app/utils/helperFunctions";
 import { IoCopyOutline } from "react-icons/io5";
+import parse from "html-react-parser";
 
 interface DescriptionDetailCoinCard {
   description: string;
@@ -26,7 +27,9 @@ const DescriptionDetailCard = ({
         <div className="w-full h-full flex flex-col">
           {description && (
             <div className="max-h-[60%] overflow-y-auto w-full h-auto">
-              <h2 className="text-gray-400 text-sm h-auto">{description}</h2>
+              <h2 className="text-gray-400 text-sm h-auto dynamic-content">
+                {parse(description)}
+              </h2>
             </div>
           )}
           <div
@@ -36,7 +39,7 @@ const DescriptionDetailCard = ({
                 : "h-[40%] flex gap-6  flex-wrap"
             }`}>
             {link1 && (
-              <button className="bg-[#FFFFFF] dark:bg-[#1E1932] px-4  rounded-lg flex items-center justify-center h-16 shadow-xl w-full">
+              <button className="bg-[#FFFFFF] dark:bg-[#1E1932] px-4  rounded-lg flex items-center justify-center h-16 shadow-sm w-full">
                 <a
                   href={link1}
                   target="_blank"
@@ -50,7 +53,7 @@ const DescriptionDetailCard = ({
               </button>
             )}
             {link2 && (
-              <button className="bg-[#FFFFFF] dark:bg-[#1E1932] px-4  rounded-lg flex items-center justify-center h-16 shadow-xl w-full">
+              <button className="bg-[#FFFFFF] dark:bg-[#1E1932] px-4  rounded-lg flex items-center justify-center h-16 shadow-sm w-full">
                 <a
                   href={link2}
                   target="_blank"
@@ -64,7 +67,7 @@ const DescriptionDetailCard = ({
               </button>
             )}
             {link3 && (
-              <button className="bg-[#FFFFFF] dark:bg-[#1E1932] px-4  rounded-lg flex items-center justify-center h-16 shadow-xl  w-full">
+              <button className="bg-[#FFFFFF] dark:bg-[#1E1932] px-4  rounded-lg flex items-center justify-center h-16 shadow-sm  w-full">
                 <a
                   href={link3}
                   target="_blank"

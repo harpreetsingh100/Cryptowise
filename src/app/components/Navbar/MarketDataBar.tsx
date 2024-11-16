@@ -14,7 +14,7 @@ import DynamicCurrencyButton from "../DynamicCurrencyButton";
 
 const MarketDataBar = () => {
   const { data, error, isLoading, isSuccess, isUninitialized } =
-    useGetMarketDataQuery("");
+    useGetMarketDataQuery();
   const { currencyType } = useAppSelector((state) => state.currency);
   const formattedNumber = formatNumber(
     data?.data?.total_market_cap[currencyType.toLowerCase()]

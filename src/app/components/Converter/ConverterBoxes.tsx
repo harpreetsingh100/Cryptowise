@@ -46,9 +46,9 @@ const ConverterBoxes = () => {
     `${coinOne}/market_chart?vs_currency=${currencyType}&days=${days}`
   );
   const coinOnePrice =
-    coinOneData?.market_data.current_price[currencyType?.toLowerCase()];
+    coinOneData?.market_data?.current_price[currencyType?.toLowerCase()];
   const coinTwoPrice =
-    coinTwoData?.market_data.current_price[currencyType?.toLowerCase()];
+    coinTwoData?.market_data?.current_price[currencyType?.toLowerCase()];
 
   useEffect(() => {
     if (inputName === "input1") {
@@ -66,6 +66,7 @@ const ConverterBoxes = () => {
     coinTwoPrice,
     inputName,
   ]);
+
   return (
     <div className="w-full">
       <div className="flex justify-between w-full relative">
