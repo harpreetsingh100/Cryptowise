@@ -5,8 +5,7 @@ const apiKey = process.env.NEXT_PUBLIC_API_KEY || "";
 export const cryptoApp = createApi({
   reducerPath: "cryptoApp",
   baseQuery: fetchBaseQuery({
-    baseUrl:
-      "https://cors-anywhere.herokuapp.com/https://api.coingecko.com/api/v3/",
+    baseUrl: "https://api.coingecko.com/api/v3/",
     mode: "cors",
     prepareHeaders: (headers) => {
       headers.set("x-cg-demo-api-key", apiKey);
