@@ -59,7 +59,8 @@ const ConverterBox = ({
   };
 
   useHandleClickOutside(ref, closeCoinList);
-
+  //eslint-disable-next-line
+  console.log("data", data);
   return (
     <div
       className={`${
@@ -89,9 +90,15 @@ const ConverterBox = ({
                         (prevCoinList: boolean) => !prevCoinList
                       );
                     }}>
-                    <h2 className="text-2xl ml-3 mt-2 overflow-hidden text-ellipsis whitespace-nowrap w-60">
-                      {data?.name}({data?.symbol.toUpperCase()})
-                    </h2>
+                    {data ? (
+                      <h2 className="text-2xl ml-3 mt-2 overflow-hidden text-ellipsis whitespace-nowrap w-60">
+                        {data?.name}({data?.symbol?.toUpperCase()})
+                      </h2>
+                    ) : (
+                      <h2 className="text-2xl ml-3 mt-2 overflow-hidden text-ellipsis whitespace-nowrap w-60">
+                        Failed to fetch data
+                      </h2>
+                    )}
 
                     <RiArrowDownSFill
                       className="ml-3 mt-2 z-50 cursor-pointer dark:text-white text-black"
@@ -124,7 +131,7 @@ const ConverterBox = ({
               <div className="h-1 dark:bg-white bg-[#9A9ABA] w-full rounded-2xl mt-5"></div>
               <div>
                 <h2 className="pt-4 flex ">
-                  1 {data?.symbol.toUpperCase()} ={" "}
+                  1 {data?.symbol?.toUpperCase()} ={" "}
                   <span className="mx-1">
                     <DynamicCurrencyButton />
                   </span>

@@ -46,12 +46,12 @@ const TopLeftCoinDetailCard = ({
   return (
     <>
       {isError && (
-        <div className="w-[45%] h-full bg-[#FFFFFF] dark:bg-[#1E1932] rounded-xl p-8 shadow-xl flex justify-center items-center">
+        <div className="w-[45%] h-full bg-[#FFFFFF] dark:bg-[#1E1932] rounded-xl p-8 shadow-sm flex justify-center items-center">
           <h2 className="text-2xl">Failed to fetch data</h2>
         </div>
       )}
       {isLoading && (
-        <div className="w-[45%] h-full bg-[#FFFFFF] dark:bg-[#1E1932] rounded-xl p-8 shadow-xl flex justify-center items-center">
+        <div className="w-[45%] h-full bg-[#FFFFFF] dark:bg-[#1E1932] rounded-xl p-8 shadow-sm flex justify-center items-center">
           <Circles
             height="100"
             width="100"
@@ -64,7 +64,7 @@ const TopLeftCoinDetailCard = ({
         </div>
       )}
       {!isLoading && !isError && (
-        <div className="w-[45%] h-full bg-[#FFFFFF] dark:bg-[#1E1932] rounded-xl p-8 shadow-xl">
+        <div className="w-[45%] h-full bg-[#FFFFFF] dark:bg-[#1E1932] rounded-xl p-8 shadow-sm">
           <Toaster position="top-right" richColors />
           <div className="flex gap-4 mt-4">
             {

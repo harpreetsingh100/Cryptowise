@@ -40,3 +40,12 @@
 .skeleton {
   animation: skeleton-loading 0.5s linear infinite alternate;
 }
+
+.dynamic-content a {
+  color: #6e6ecc;
+  text-decoration: none; 
+}
+
+.dynamic-content a:hover {
+  text-decoration: underline; 
+}

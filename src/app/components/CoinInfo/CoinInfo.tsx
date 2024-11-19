@@ -70,7 +70,7 @@ const CoinInfo = ({ coinName }: { coinName: string }) => {
         <hr />
       </div>
       <div className="flex justify-between gap-[2%] h-[200px]">
-        <div className=" w-[49%] p-6 bg-[#FFFFFF] dark:bg-[#1E1932] flex flex-col justify-between rounded-xl shadow-xl">
+        <div className=" w-[49%] p-6 bg-[#FFFFFF] dark:bg-[#1E1932] flex flex-col justify-between rounded-xl shadow-sm">
           <CoinInfoBulletPoint
             heading="Total Volume"
             data={addCommas(
@@ -101,7 +101,7 @@ const CoinInfo = ({ coinName }: { coinName: string }) => {
             isError={isError}
           />
         </div>
-        <div className=" w-[49%] bg-[#FFFFFF] dark:bg-[#1E1932] flex flex-col justify-between p-6 rounded-xl shadow-xl">
+        <div className=" w-[49%] bg-[#FFFFFF] dark:bg-[#1E1932] flex flex-col justify-between p-6 rounded-xl shadow-sm">
           <CoinInfoBulletPoint
             heading="Max Supply"
             data={
@@ -157,7 +157,7 @@ const CoinInfo = ({ coinName }: { coinName: string }) => {
           </div>
         </div>
       </div>
-      <div className="h-[140px] w-[48%] p-6 bg-[#FFFFFF] dark:bg-[#1E1932] flex flex-col justify-between gap-[4%] mt-6 rounded-xl shadow-xl">
+      <div className="h-[140px] w-[49%] p-6 bg-[#FFFFFF] dark:bg-[#1E1932] flex flex-col justify-between gap-[4%] mt-6 rounded-xl shadow-sm">
         <CoinInfoBulletPoint
           heading="Market Cap"
           data={addCommas(
