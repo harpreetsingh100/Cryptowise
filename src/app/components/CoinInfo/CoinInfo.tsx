@@ -107,7 +107,9 @@ const CoinInfo = ({ coinName }: { coinName: string }) => {
             data={
               data?.market_data?.max_supply
                 ? addCommas(data?.market_data?.max_supply)
-                : "Not Available"
+                : addCommas(
+                    Math.abs(data?.market_data?.circulating_supply).toFixed(0)
+                  )
             }
             isLoading={isLoading}
             isError={isError}
@@ -132,7 +134,8 @@ const CoinInfo = ({ coinName }: { coinName: string }) => {
                       )?.toFixed(2) + "%"}
                   </span>
                   <span>
-                    {supplyPercentage && (100 - supplyPercentage).toFixed(2)}
+                    {supplyPercentage &&
+                      (100 - supplyPercentage).toFixed(2) + "%"}
                   </span>
                 </div>
               )}

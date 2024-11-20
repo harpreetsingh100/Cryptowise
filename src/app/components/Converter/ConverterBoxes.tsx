@@ -2,7 +2,10 @@
 
 import { useEffect, useState } from "react";
 import ConverterBox from "./ConverterBox";
-import { useGetChartCoinDataQuery } from "@/lib/features/api";
+import {
+  useGetChartCoinDataQuery,
+  useGetOneCoinDetailQuery,
+} from "@/lib/features/api";
 import { useAppSelector } from "@/lib/hooks";
 import { PiArrowsDownUp } from "react-icons/pi";
 import ConverterChart from "../Charts/ConverterChart";
@@ -27,14 +30,14 @@ const ConverterBoxes = () => {
     isLoading: isLoadingCoinOne,
     isUninitialized: isUninitializedCoinOne,
     isError: isErrorCoinOne,
-  } = useGetChartCoinDataQuery(coinOne);
+  } = useGetOneCoinDetailQuery(coinOne);
   const {
     data: coinTwoData,
     isSuccess: isSuccessCoinTwo,
     isLoading: isLoadingCoinTwo,
     isUninitialized: isUninitializedCoinTwo,
     isError: isErrorCoinTwo,
-  } = useGetChartCoinDataQuery(coinTwo);
+  } = useGetOneCoinDetailQuery(coinTwo);
   const { currencyType } = useAppSelector((state) => state.currency);
   const { theme } = useTheme();
 
