@@ -59,8 +59,7 @@ const ConverterBox = ({
   };
 
   useHandleClickOutside(ref, closeCoinList);
-  //eslint-disable-next-line
-  console.log("data", data);
+
   return (
     <div
       className={`${

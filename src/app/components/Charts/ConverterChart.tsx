@@ -50,11 +50,11 @@ const ConverterChart = ({
   const { data: chartDataTwo } = useGetChartCoinDataQuery(
     `${coinTwo}/market_chart?vs_currency=${currencyType?.toLowerCase()}&days=${days}`
   );
-  const chartLabels = chartDataOne?.prices.map((item: any) =>
+  const chartLabels = chartDataOne?.prices?.map((item: any) =>
     getChartLabels(days, item[0])
   );
-  const priceDataOne = chartDataOne?.prices.map((item: any) => item[1]);
-  const priceDataTwo = chartDataTwo?.prices.map((item: any) => item[1]) || [];
+  const priceDataOne = chartDataOne?.prices?.map((item: any) => item[1]);
+  const priceDataTwo = chartDataTwo?.prices?.map((item: any) => item[1]) || [];
   const priceOneToPriceTwo = priceDataOne?.map(
     (price: number, index: number) => price / priceDataTwo?.[index]
   );
