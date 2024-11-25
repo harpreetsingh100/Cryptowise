@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 interface CoinData {
   id: number;
@@ -52,14 +53,20 @@ const PortfolioDeletePortal = ({
                 </div>
               </div>
               <div className="flex justify-center items-center gap-4">
-                <button
+                <motion.button
+                  whileHover={{ scale: 1.09 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ type: "spring", stiffness: 300 }}
                   className="bg-[#B0B0EC] dark:bg-[#3A3A78] px-20 py-2 rounded-xl text-white"
                   onClick={() => {
                     setShowDeleteCoinPortal(false);
                   }}>
                   No
-                </button>
-                <button
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.09 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ type: "spring", stiffness: 300 }}
                   className="bg-[#B0B0EC] dark:bg-[#3A3A78] px-20 py-2 rounded-xl text-white"
                   onClick={() => {
                     const filteredList = portfolioCoinList.filter((coin) => {
@@ -69,7 +76,7 @@ const PortfolioDeletePortal = ({
                     setShowDeleteCoinPortal(false);
                   }}>
                   Yes
-                </button>
+                </motion.button>
               </div>
             </div>
           </div>

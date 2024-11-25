@@ -33,7 +33,7 @@ const CoinTable = () => {
   };
 
   return (
-    <div className="max-w-[85%] mx-auto mt-4">
+    <div className="max-w-[86.5%] mx-auto mt-4">
       <CoinTableHeader setCoins={setCoins} />
       <InfiniteScroll
         dataLength={coins.length}
@@ -55,9 +55,9 @@ const CoinTable = () => {
             </div>
           )
         }>
-        <div>
+        <div className="w-full h-full">
           {coins.map((coin, i) => (
-            <div key={`${coin?.id}+${Math.random()}`}>
+            <div key={`${coin?.id}+${Math.random()}`} className=" px-[6px]">
               <Link href={`/coins/${coin?.id?.toLowerCase()}`}>
                 <CoinInfoItem coin={coin} index={i} />
               </Link>

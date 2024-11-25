@@ -87,8 +87,8 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                       selectedCoin == coin.id ||
                       selectedCoinTwo == coin.id ||
                       selectedCoinThree == coin.id
-                        ? "bg-[#A9AAEC] dark:bg-[#39397C] embla__slide flex-none w-[24.3%] rounded-xl h-20  flex relative mx-[1px] cursor-pointer"
-                        : "bg-lightBg dark:bg-[#191926] embla__slide flex-none w-[24%] rounded-xl h-20  flex relative mx-[1px] cursor-pointer"
+                        ? "bg-[#A9AAEC] dark:bg-[#39397C] embla__slide flex-none w-[23.95%] rounded-xl h-20  flex relative mx-[1px] cursor-pointer"
+                        : "bg-lightBg dark:bg-[#191926] embla__slide flex-none w-[23.95%] rounded-xl h-20  flex relative mx-[1px] cursor-pointer"
                     }`}
                     onClick={() => {
                       handleChangeSelectedCoin(coin.id);
@@ -163,10 +163,10 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
           </div>
         </div>
 
-        <div className="flex items-center absolute top-4 -left-[5%]">
+        <div className="flex items-center absolute top-4 -left-[2%] shadow-2xl">
           <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
         </div>
-        <div className="flex items-center absolute top-4 -right-[4.5%]">
+        <div className="flex items-center absolute top-4 -right-[2%] shadow-2xl">
           <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
         </div>
       </div>

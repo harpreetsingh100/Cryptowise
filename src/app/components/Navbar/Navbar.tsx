@@ -14,6 +14,7 @@ import { useHandleClickOutside } from "@/lib/hooks/useHandleClickOutside";
 import { RiArrowDownSFill } from "react-icons/ri";
 import DynamicCurrencyButton from "../DynamicCurrencyButton";
 import SearchBar from "../SearchBar/SearchBar";
+import { motion } from "framer-motion";
 
 const Navbar = () => {
   const [showCurrencyOptions, setShowCurrencyOptions] =
@@ -35,12 +36,16 @@ const Navbar = () => {
     <div className="w-screen bg-lightBg dark:bg-darkBg dark:text-lightText text-purpleText shadow-xl py-2 z-30">
       <div className="flex justify-between items-center max-w-[85%] h-[8vh] bg-lightBg dark:bg-darkBg dark:text-lightText text-purpleText w-screen m-auto">
         <div className="flex gap-20">
-          <div className="flex justify-center items-center">
+          <div className="flex justify-center items-center ">
             <Logo />
           </div>
           <div className="font-extrabold text-xl">Crypto Wise</div>
           <div className="flex gap-8 justify-center items-center ml-8 text-xl">
-            <div className="flex justify-center items-center">
+            <motion.div
+              className="flex justify-center items-center"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 300 }}>
               <span
                 className={`${
                   pathName === "/"
@@ -60,8 +65,12 @@ const Navbar = () => {
                   Home
                 </Link>
               </span>
-            </div>
-            <div className="flex justify-center items-center">
+            </motion.div>
+            <motion.div
+              className="flex justify-center items-center"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 300 }}>
               <span
                 className={`${
                   pathName === "/portfolio"
@@ -81,7 +90,7 @@ const Navbar = () => {
                   Portfolio
                 </Link>
               </span>
-            </div>
+            </motion.div>
           </div>
         </div>
         <div className="flex gap-3 z-50">

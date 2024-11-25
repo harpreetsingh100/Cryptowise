@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 const ConverterButtons = () => {
   const [isConverterVisible, setIsConverterVisible] = useState(false);
@@ -17,31 +18,37 @@ const ConverterButtons = () => {
   return (
     <div className="max-w-[85%] m-auto pt-6">
       <Link href="/">
-        <button
+        <motion.button
           className={`${
             isConverterVisible
               ? "bg-lightBg text-[#7171a8] dark:bg-[#232337]"
               : "bg-[#B0B0F0] text-lightText dark:bg-[#3D3D82]"
-          } w-56 rounded-md px-4 py-2 shadow-lg h-10 dark:text-lightText`}
+          } w-56 rounded-md px-4 py-2 shadow-lg h-10 dark:text-lightText z-10`}
           onClick={() => {
             setIsConverterVisible(false);
-          }}>
+          }}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ type: "spring", stiffness: 300 }}>
           Coins
-        </button>
+        </motion.button>
       </Link>
 
       <Link href="/converter">
-        <button
+        <motion.button
           className={`${
             isConverterVisible
-              ? "bg-[#B0B0F0] text-lightText dark:bg-[#3D3D82]"
-              : "bg-lightBg text-[#7171a8] dark:bg-[#232337]"
-          } w-56 rounded-md px-4 py-2 shadow-lg h-10 dark:text-lightText`}
+              ? "bg-[#B0B0F0] text-lightText dark:bg-[#3D3D82] z-10"
+              : "bg-lightBg text-[#7171a8] dark:bg-[#232337] z-10"
+          } w-56 rounded-md px-4 py-2 shadow-lg h-10 dark:text-lightText z-10`}
           onClick={() => {
             setIsConverterVisible(true);
-          }}>
+          }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ type: "spring", stiffness: 300 }}>
           Converter
-        </button>
+        </motion.button>
       </Link>
     </div>
   );
