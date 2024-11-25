@@ -18,6 +18,7 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import Image from "next/image";
 import DynamicCurrencyButton from "../DynamicCurrencyButton";
 import PortfolioCoinCardLoader from "./PortfolioCoinCardLoader";
+import { motion } from "framer-motion";
 
 interface Coin {
   id: number;
@@ -103,14 +104,17 @@ const PortfolioCoinCard = ({
                     <h2 className="text-lg ml-16">Market Price</h2>
                   </div>
                   <div className="text-center w-1/4 flex justify-center items-center ">
-                    <button
+                    <motion.button
+                      whileHover={{ scale: 1.09 }}
+                      whileTap={{ scale: 0.95 }}
+                      transition={{ type: "spring", stiffness: 300 }}
                       className="p-3 rounded-lg text-white bg-[#A5A4DA] dark:bg-[#3A3978] "
                       onClick={() => {
                         setShowDeleteCoinPortal(true);
                         setSelectedId(coin?.id);
                       }}>
                       <RiDeleteBin6Line size={20} />
-                    </button>
+                    </motion.button>
                   </div>
                 </div>
                 <div className="flex items-center mt-8 w-full ">
@@ -184,7 +188,10 @@ const PortfolioCoinCard = ({
                     <h2 className="text-lg ml-16">Your Coin</h2>
                   </div>
                   <div className="text-center w-1/4 flex justify-center items-center">
-                    <button
+                    <motion.button
+                      whileHover={{ scale: 1.09 }}
+                      whileTap={{ scale: 0.95 }}
+                      transition={{ type: "spring", stiffness: 300 }}
                       className="p-3 rounded-lg text-white bg-[#A5A4DA] dark:bg-[#3A3978]"
                       onClick={() => {
                         setShowPortfolioPortal(true);
@@ -192,7 +199,7 @@ const PortfolioCoinCard = ({
                         setSelectedId(coin?.id);
                       }}>
                       <AiFillEdit size={20} />
-                    </button>
+                    </motion.button>
                   </div>
                 </div>
                 <div className="flex items-center mt-8 w-full">

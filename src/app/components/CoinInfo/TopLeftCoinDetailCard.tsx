@@ -10,6 +10,7 @@ import { IoCopyOutline } from "react-icons/io5";
 import { Toaster } from "sonner";
 import { Circles } from "react-loader-spinner";
 import { useTheme } from "next-themes";
+import { motion } from "framer-motion";
 
 interface TopLeftCoinDetailCardProps {
   imgUrl: string;
@@ -85,11 +86,14 @@ const TopLeftCoinDetailCard = ({
                 <a href={linkUrl} target="_blank" rel="noopener noreferrer">
                   {linkUrl}
                 </a>
-                <span
+                <motion.span
+                  whileHover={{ scale: 1.4 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ type: "spring", stiffness: 300 }}
                   className="cursor-pointer"
                   onClick={() => handleCopy(linkUrl)}>
                   <IoCopyOutline />
-                </span>
+                </motion.span>
               </div>
             </div>
           </div>

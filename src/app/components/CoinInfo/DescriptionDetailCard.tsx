@@ -1,6 +1,7 @@
 import { handleCopy } from "@/app/utils/helperFunctions";
 import { IoCopyOutline } from "react-icons/io5";
 import parse from "html-react-parser";
+import { motion } from "framer-motion";
 
 interface DescriptionDetailCoinCard {
   description: string;
@@ -40,44 +41,68 @@ const DescriptionDetailCard = ({
             }`}>
             {link1 && (
               <button className="bg-[#FFFFFF] dark:bg-[#1E1932] px-4  rounded-lg flex items-center justify-center h-[68px] shadow-sm w-full">
-                <a
+                <motion.a
                   href={link1}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="overflow-hidden text-ellipsis whitespace-nowrap w-full">
+                  className="overflow-hidden text-ellipsis whitespace-nowrap w-full"
+                  whileHover={{ scale: 1.07 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ type: "spring", stiffness: 300 }}>
                   {link1}
-                </a>
-                <span className="ml-2" onClick={() => handleCopy(link1)}>
+                </motion.a>
+                <motion.span
+                  className="ml-2"
+                  onClick={() => handleCopy(link1)}
+                  whileHover={{ scale: 1.4 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ type: "spring", stiffness: 300 }}>
                   <IoCopyOutline />
-                </span>
+                </motion.span>
               </button>
             )}
             {link2 && (
               <button className="bg-[#FFFFFF] dark:bg-[#1E1932] px-4  rounded-lg flex items-center justify-center h-[68px] shadow-sm w-full">
-                <a
+                <motion.a
                   href={link2}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="overflow-hidden text-ellipsis whitespace-nowrap w-full">
+                  className="overflow-hidden text-ellipsis whitespace-nowrap w-full"
+                  whileHover={{ scale: 1.07 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ type: "spring", stiffness: 300 }}>
                   {link2}
-                </a>
-                <span className="ml-2" onClick={() => handleCopy(link2)}>
+                </motion.a>
+                <motion.span
+                  className="ml-2"
+                  onClick={() => handleCopy(link2)}
+                  whileHover={{ scale: 1.4 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ type: "spring", stiffness: 300 }}>
                   <IoCopyOutline />
-                </span>
+                </motion.span>
               </button>
             )}
             {link3 && (
               <button className="bg-[#FFFFFF] dark:bg-[#1E1932] px-4  rounded-lg flex items-center justify-center h-[68px] shadow-sm  w-full">
-                <a
+                <motion.a
                   href={link3}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="overflow-hidden text-ellipsis whitespace-nowrap w-full">
+                  className="overflow-hidden text-ellipsis whitespace-nowrap w-full"
+                  whileHover={{ scale: 1.07 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ type: "spring", stiffness: 300 }}>
                   {link3}
-                </a>
-                <span className="ml-2" onClick={() => handleCopy(link3)}>
+                </motion.a>
+                <motion.span
+                  className="ml-2"
+                  onClick={() => handleCopy(link3)}
+                  whileHover={{ scale: 1.4 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ type: "spring", stiffness: 300 }}>
                   <IoCopyOutline />
-                </span>
+                </motion.span>
               </button>
             )}
           </div>

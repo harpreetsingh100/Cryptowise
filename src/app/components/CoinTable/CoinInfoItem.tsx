@@ -12,6 +12,7 @@ import { Line } from "rc-progress";
 import TableChart from "../Charts/TableChart";
 import { useTheme } from "next-themes";
 import DynamicCurrencyButton from "../DynamicCurrencyButton";
+import { motion } from "framer-motion";
 
 interface Coin {
   id: string;
@@ -70,10 +71,14 @@ const CoinInfoItem: React.FC<CoinInfoItemProps> = ({ coin, index }) => {
   const dotStyling = theme === "dark" ? lightDotDarkMode : lightDotLightMode;
 
   return (
-    <div>
-      <div className="flex justify-between bg-lightBg dark:bg-[#191926] my-3 rounded-xl h-16">
+    <div className="overflow-visible h-full w-full">
+      <motion.div
+        className="flex justify-between bg-lightBg dark:bg-[#191926] my-3 rounded-xl h-16 overflow-visible"
+        whileHover={{ scale: 1.01 }}
+        whileTap={{ scale: 0.95 }}
+        transition={{ type: "spring", stiffness: 300 }}>
         <div className="w-[5%] flex justify-start items-center">
-          <h1 className="ml-4 text-gray-600">{index}</h1>
+          <h1 className="ml-4 text-gray-600">{index + 1}</h1>
         </div>
         <div className="w-[20%] flex justify-start items-center text-sm">
           <div>
@@ -242,7 +247,7 @@ const CoinInfoItem: React.FC<CoinInfoItemProps> = ({ coin, index }) => {
             />
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

@@ -67,8 +67,7 @@ const Chart = () => {
               Failed to fetch data
             </div>
           )}
-
-          {isLoading && !isError && !isSuccess && (
+          {isLoading && (
             <div className="h-full w-full">
               <ChartLoader />
             </div>
@@ -100,7 +99,7 @@ const Chart = () => {
               Failed to fetch data
             </div>
           )}
-          {isLoading && !isSuccess && (
+          {isLoading && (
             <div className="h-full w-full">
               <ChartLoader />
             </div>

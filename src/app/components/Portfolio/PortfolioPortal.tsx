@@ -10,6 +10,7 @@ import { useGetCoinDataQuery } from "@/lib/features/api";
 import Image from "next/image";
 import { capitalizeFirstLetter } from "@/app/utils/helperFunctions";
 import SkeletonLoader from "../SkeletonLoader";
+import { motion } from "framer-motion";
 
 interface CoinData {
   amount: number;
@@ -253,21 +254,27 @@ const PortfolioPortal = ({
                   </div>
                 </div>
                 <div className="h-[30%] flex justify-between items-end ">
-                  <button
+                  <motion.button
                     type="button"
                     className="px-5 py-3 rounded-xl dark:bg-[#3A397C] bg-[#A5A4DA] text-white"
                     onClick={() => {
                       setShowPortfolioPortal(false);
                       setShowEditCoinPortal(false);
-                    }}>
+                    }}
+                    whileHover={{ scale: 1.09 }}
+                    whileTap={{ scale: 0.95 }}
+                    transition={{ type: "spring", stiffness: 300 }}>
                     Cancel
-                  </button>
+                  </motion.button>
                   <div>
-                    <button
+                    <motion.button
                       type="submit"
-                      className="px-5 py-3 rounded-xl dark:bg-[#3A397C] bg-[#A5A4DA] text-white">
+                      className="px-5 py-3 rounded-xl dark:bg-[#3A397C] bg-[#A5A4DA] text-white"
+                      whileHover={{ scale: 1.09 }}
+                      whileTap={{ scale: 0.95 }}
+                      transition={{ type: "spring", stiffness: 300 }}>
                       Save and Continue
-                    </button>
+                    </motion.button>
                   </div>
                 </div>
               </div>

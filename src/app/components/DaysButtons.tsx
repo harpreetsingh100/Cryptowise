@@ -1,9 +1,12 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const DaysButtons = ({ days, setDays }: { days: number; setDays: any }) => {
   return (
     <div className="w-auto">
-      <button
+      <motion.button
+        whileHover={{ scale: 1.1 }}
+        transition={{ type: "spring", stiffness: 300 }}
         className={`${
           days === 1
             ? "bg-[#A2A3ED] dark:bg-[#42428B] py-2 px-4 rounded-lg"
@@ -11,8 +14,10 @@ const DaysButtons = ({ days, setDays }: { days: number; setDays: any }) => {
         }`}
         onClick={() => setDays(1)}>
         1D
-      </button>
-      <button
+      </motion.button>
+      <motion.button
+        whileHover={{ scale: 1.1 }}
+        transition={{ type: "spring", stiffness: 300 }}
         className={`${
           days === 7
             ? "bg-[#A2A3ED] dark:bg-[#42428B] py-2 px-4 rounded-lg"
@@ -20,8 +25,10 @@ const DaysButtons = ({ days, setDays }: { days: number; setDays: any }) => {
         }`}
         onClick={() => setDays(7)}>
         7D
-      </button>
-      <button
+      </motion.button>
+      <motion.button
+        whileHover={{ scale: 1.1 }}
+        transition={{ type: "spring", stiffness: 300 }}
         className={`${
           days === 14
             ? "bg-[#A2A3ED] dark:bg-[#42428B] py-2 px-4 rounded-lg"
@@ -29,8 +36,10 @@ const DaysButtons = ({ days, setDays }: { days: number; setDays: any }) => {
         }`}
         onClick={() => setDays(14)}>
         14D
-      </button>
-      <button
+      </motion.button>
+      <motion.button
+        whileHover={{ scale: 1.1 }}
+        transition={{ type: "spring", stiffness: 300 }}
         className={`${
           days === 30
             ? "bg-[#A2A3ED] dark:bg-[#42428B] py-2 px-4 rounded-lg"
@@ -38,8 +47,10 @@ const DaysButtons = ({ days, setDays }: { days: number; setDays: any }) => {
         }`}
         onClick={() => setDays(30)}>
         1M
-      </button>
-      <button
+      </motion.button>
+      <motion.button
+        whileHover={{ scale: 1.1 }}
+        transition={{ type: "spring", stiffness: 300 }}
         className={`${
           days === 180
             ? "bg-[#A2A3ED] dark:bg-[#42428B] py-2 px-4 rounded-lg"
@@ -47,8 +58,10 @@ const DaysButtons = ({ days, setDays }: { days: number; setDays: any }) => {
         }`}
         onClick={() => setDays(180)}>
         6M
-      </button>
-      <button
+      </motion.button>
+      <motion.button
+        whileHover={{ scale: 1.1 }}
+        transition={{ type: "spring", stiffness: 300 }}
         className={`${
           days === 365
             ? "bg-[#A2A3ED] dark:bg-[#42428B] py-2 px-4 rounded-lg"
@@ -56,7 +69,7 @@ const DaysButtons = ({ days, setDays }: { days: number; setDays: any }) => {
         }`}
         onClick={() => setDays(365)}>
         1Y
-      </button>
+      </motion.button>
     </div>
   );
 };

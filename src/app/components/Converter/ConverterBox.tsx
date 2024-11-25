@@ -10,6 +10,7 @@ import { useHandleClickOutside } from "@/lib/hooks/useHandleClickOutside";
 import ConverterBoxLoader from "./ConverterBoxLoader";
 import SkeletonLoader from "../SkeletonLoader";
 import ConverterBoxError from "./ConverterBoxError";
+import { motion } from "framer-motion";
 
 const ConverterBox = ({
   sell,
@@ -47,6 +48,20 @@ const ConverterBox = ({
   isSuccess: boolean;
 }) => {
   const { currencyType } = useAppSelector((state) => state.currency);
+
+  const dropdownVariants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.3, ease: "easeInOut" },
+    },
+    exit: {
+      opacity: 0,
+      y: -20,
+      transition: { duration: 0.2, ease: "easeInOut" },
+    },
+  };
 
   const ref = useRef<HTMLDivElement>(null);
 
@@ -105,12 +120,17 @@ const ConverterBox = ({
                     />
                   </div>
                   {isCoinListVisible && (
-                    <div className="absolute top-16 w-[400px] left-[-10px] h-80 overflow-y-auto dark:bg-[#191925] bg-[#EBEBFC] px-8 py-4 rounded-2xl">
+                    <motion.div
+                      className="absolute top-16 w-[400px] left-[-10px] h-80 overflow-y-auto dark:bg-[#191925] bg-[#EBEBFC] px-8 py-4 rounded-2xl"
+                      variants={dropdownVariants}
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit">
                       <CoinsList
                         setCoin={setCoin}
                         setIsCoinListVisible={setIsCoinListVisible}
                       />
-                    </div>
+                    </motion.div>
                   )}
                 </div>
                 <div className="mt-6 mr-3 z-30 ">

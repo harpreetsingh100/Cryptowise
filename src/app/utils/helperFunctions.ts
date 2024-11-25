@@ -212,7 +212,7 @@ export function chartData(
     datasets: [
       {
         label: label,
-        data: dataOne,
+        data: dataOne && dataOne,
         borderColor: "#7878FA",
         borderWidth: 3,
         borderRadius: 3,
