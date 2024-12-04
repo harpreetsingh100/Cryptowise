@@ -16,7 +16,7 @@ const PortfolioHeader = ({ setShowPortfolioPortal }: PortfolioHeaderProps) => {
           whileHover={{ scale: 1.09 }}
           whileTap={{ scale: 0.95 }}
           transition={{ type: "spring", stiffness: 300 }}
-          className="dark:bg-[#3A397C] bg-[#A5A4DA] px-4 py-2 rounded-lg w-40 text-white"
+          className="dark:bg-[#3A397C] bg-[#A5A4DA] px-4 py-2 rounded-lg w-40 text-white text-sm"
           onClick={() => {
             setShowPortfolioPortal((prev: boolean) => !prev);
           }}>

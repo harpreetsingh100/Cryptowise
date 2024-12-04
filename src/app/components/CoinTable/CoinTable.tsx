@@ -33,7 +33,7 @@ const CoinTable = () => {
   };
 
   return (
-    <div className="max-w-[86.5%] mx-auto mt-4">
+    <div className="max-w-[86.5%] mx-auto mt-44 sm:mt-[270px] lg:my-6">
       <CoinTableHeader setCoins={setCoins} />
       <InfiniteScroll
         dataLength={coins.length}
@@ -57,7 +57,7 @@ const CoinTable = () => {
         }>
         <div className="w-full h-full">
           {coins.map((coin, i) => (
-            <div key={`${coin?.id}+${Math.random()}`} className=" px-[6px]">
+            <div key={`${coin?.id}+${Math.random()}`} className="px-[6px]">
               <Link href={`/coins/${coin?.id?.toLowerCase()}`}>
                 <CoinInfoItem coin={coin} index={i} />
               </Link>
@@ -67,7 +67,7 @@ const CoinTable = () => {
       </InfiniteScroll>
       {isError && (
         <div className="flex justify-center items-center w-full mt-6">
-          <h2 className="text-xl">Failed to fetch Data</h2>
+          <h2 className="text-sm lg:text-xl">Failed to fetch Data</h2>
         </div>
       )}
     </div>

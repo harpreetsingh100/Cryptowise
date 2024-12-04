@@ -12,7 +12,7 @@ const OPTIONS: EmblaOptionsType = {
 
 const CoinCarousel = () => {
   return (
-    <div className="max-w-[85%] m-auto pt-8 ">
+    <div className="max-w-[85%] m-auto pt-5 sm:pt-8 ">
       <EmblaCarousel options={OPTIONS} />
     </div>
   );

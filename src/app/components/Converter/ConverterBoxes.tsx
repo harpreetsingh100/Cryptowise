@@ -39,6 +39,7 @@ const ConverterBoxes = () => {
     isError: isErrorCoinTwo,
   } = useGetOneCoinDetailQuery(coinTwo);
   const { currencyType } = useAppSelector((state) => state.currency);
+  const windowWidth = window.innerWidth;
   const { theme } = useTheme();
 
   const {
@@ -72,7 +73,7 @@ const ConverterBoxes = () => {
 
   return (
     <div className="w-full">
-      <div className="flex justify-between w-full relative">
+      <div className="flex justify-between w-full relative flex-col lg:flex-row">
         <ConverterBox
           sell
           data={coinOneData}
@@ -119,14 +120,16 @@ const ConverterBoxes = () => {
       <div className="my-6">
         {(isErrorChartData || isErrorCoinOne || isErrorCoinTwo) && (
           <div className="h-[400px] bg-white dark:bg-[#191934] py-6 rounded-xl my-6 flex justify-center items-center">
-            <h2 className="text-2xl">Failed to fetch data</h2>
+            <h2 className="text-lg sm:text-lg md:text-lg lg:text-2xl">
+              Failed to fetch data
+            </h2>
           </div>
         )}
         {isLoadingChartData && (
           <div className="h-[400px] bg-white dark:bg-[#191934] py-6 rounded-xl my-6 flex justify-center items-center">
             <Circles
-              height="100"
-              width="100"
+              height={windowWidth > 768 ? "100" : "70"}
+              width={windowWidth > 768 ? "100" : "70"}
               color={`${theme === "light" ? "#A9AAEC" : "#6161D6"}`}
               ariaLabel="circles-loading"
               wrapperStyle={{}}
@@ -144,7 +147,7 @@ const ConverterBoxes = () => {
       </div>
       <div>
         {isSuccessChartData && (
-          <div className="w-[315px] flex gap-2 bg-[#E3E5FB] dark:bg-[#232337] rounded-lg mt-6 text-black dark:text-white">
+          <div className="w-[298px] lg:w-[330px] flex gap-2 m-auto sm:m-0 bg-[#E3E5FB] dark:bg-[#232337] rounded-lg mt-6 text-black dark:text-white">
             <DaysButtons days={days} setDays={setDays} />
           </div>
         )}

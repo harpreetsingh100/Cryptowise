@@ -19,7 +19,7 @@ const CoinInfoBulletPoint = ({
         <span className="w-5 h-5 bg-[#B0B0EC] dark:bg-[#424286] rounded-2xl flex justify-center items-center text-white">
           +
         </span>
-        <span>{heading}</span>
+        <span className="text-sm lg:text-lg">{heading}</span>
       </div>
       <div>
         {isLoading && (
@@ -29,10 +29,12 @@ const CoinInfoBulletPoint = ({
         )}
         {isError && (
           <div className="h-10 w-44 py-2">
-            <h2 className="text-sm">Failed to fetch data</h2>
+            <h2 className="text-sm lg:text-lg">Failed to fetch data</h2>
           </div>
         )}
-        {!isLoading && !isError && <span>{data}</span>}
+        {!isLoading && !isError && (
+          <span className="text-sm lg:text-lg">{data}</span>
+        )}
       </div>
     </div>
   );

@@ -106,32 +106,38 @@ const LineChart = ({
   const isOnlyOneCoinSelected = selectedCoins.length === 1;
 
   return (
-    <div className="bg-white dark:bg-[#191934] py-6 rounded-xl h-[420px]">
+    <div className="bg-white dark:bg-[#191934] py-2 lg:py-6 rounded-xl h-[280px] sm:h-[320px] lg:h-[420px] sm:px-3 lg:px-0">
       {isOnlyOneCoinSelected ? (
-        <div className="bg-white dark:bg-[#191934] text-white p-6">
-          <div className="text-black dark:text-white">Volume 24h </div>
+        <div className="bg-white dark:bg-[#191934] text-white p-4 lg:p-6">
+          <div className="text-black dark:text-white text-sm sm:text-lg md:text-lg lg:text-lg">
+            Volume 24h{" "}
+          </div>
           <div className="text-black dark:text-white">
-            <span>
+            <span className="text-black dark:text-white text-sm sm:text-lg md:text-lg lg:text-lg pt-1 lg:pt-0">
               {(selectedCoin && coinVolumesAmountsOne) ||
                 (selectedCoinTwo && coinVolumesAmountsTwo) ||
                 (selectedCoinThree && coinVolumesAmountsThree)}
             </span>
           </div>
-          <div className="text-black dark:text-white">{formattedDate}</div>
+          <div className="text-black dark:text-white text-sm sm:text-lg md:text-lg lg:text-lg">
+            {formattedDate}
+          </div>
         </div>
       ) : (
-        <div className="flex flex-col gap-1 m-6">
+        <div className="flex flex-col lg:gap-1 p-4 lg:p-[22px]">
           <div className="mr-4">
             {selectedCoin ? (
               <div className="flex items-center">
-                <div className="h-5 w-6 dark:bg-[#3D3D82] bg-[#7F7FFB] px-1 rounded-sm mr-2"></div>
-                <span className="text-black dark:text-white">
+                <div className=" dark:bg-[#3D3D82] bg-[#7F7FFB] px-1 rounded-sm mr-2 h-4 lg:h-5 w-4 lg:w-6"></div>
+                <span className="text-black dark:text-white text-sm lg:text-lg mt-[2px]">
                   {selectedCoin.toUpperCase()}
                 </span>
                 <span className="mx-1">{"- "}</span>
-                <span className="flex ml-1">
+                <span className="flex ml-1 text-sm lg:text-lg">
                   <DynamicCurrencyButton />
-                  <span className="ml-2">{coinVolumesAmountsOne}</span>
+                  <span className="ml-2 text-sm lg:text-lg">
+                    {coinVolumesAmountsOne}
+                  </span>
                 </span>
               </div>
             ) : (
@@ -141,14 +147,16 @@ const LineChart = ({
           <div className="mr-4">
             {selectedCoinTwo ? (
               <div className="flex items-center">
-                <div className="h-5 w-6 bg-[#B165D2] px-1 rounded-sm mr-2"></div>
-                <span className="text-black dark:text-white">
+                <div className=" bg-[#B165D2] px-1 rounded-sm mr-2 h-4 lg:h-5 w-4 lg:w-6"></div>
+                <span className="text-black dark:text-white text-sm lg:text-lg mt-[2px]">
                   {selectedCoinTwo.toUpperCase()}
                 </span>
                 <span className="mx-1">{"- "}</span>
-                <span className="flex ml-1">
+                <span className="flex ml-1 text-sm lg:text-lg">
                   <DynamicCurrencyButton />
-                  <span className="ml-2">{coinVolumesAmountsTwo}</span>
+                  <span className="ml-2 text-sm lg:text-lg">
+                    {coinVolumesAmountsTwo}
+                  </span>
                 </span>
               </div>
             ) : (
@@ -158,14 +166,16 @@ const LineChart = ({
           <div className="mr-4">
             {selectedCoinThree ? (
               <div className="flex items-center">
-                <div className="h-5 w-6 bg-[#FF9D3D] px-1 rounded-sm mr-2"></div>
-                <span className="text-black dark:text-white">
+                <div className=" bg-[#FF9D3D] px-1 rounded-sm mr-2 h-4 lg:h-5 w-4 lg:w-6"></div>
+                <span className="text-black dark:text-white text-sm lg:text-lg mt-[2px]">
                   {selectedCoinThree.toUpperCase()}
                 </span>
                 <span className="mx-1">{"- "}</span>
-                <span className="flex ml-1">
+                <span className="flex ml-1 text-sm lg:text-lg">
                   <DynamicCurrencyButton />
-                  <span className="ml-2">{coinVolumesAmountsThree}</span>
+                  <span className="ml-2 text-sm lg:text-lg">
+                    {coinVolumesAmountsThree}
+                  </span>
                 </span>
               </div>
             ) : (
@@ -174,7 +184,7 @@ const LineChart = ({
           </div>
         </div>
       )}
-      <div className="h-[250px] bg-white dark:bg-[#191934] px-6">
+      <div className="h-[150px] sm:h-[170px] lg:h-[250px] bg-white dark:bg-[#191934] px-4 lg:px-6 lg:py-6 lg:mt-1">
         <Bar
           options={chartOptions}
           data={chartData(

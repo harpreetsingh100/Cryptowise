@@ -33,7 +33,7 @@ const ConverterBoxError = ({
                     (prevCoinList: boolean) => !prevCoinList
                   );
                 }}>
-                <h2 className="text-xl ml-3 mt-2 w-full">
+                <h2 className="text-lg lg:text-xl ml-3 mt-2 w-full">
                   Failed to fetch data
                 </h2>
 

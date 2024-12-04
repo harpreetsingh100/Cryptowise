@@ -24,11 +24,11 @@ const MarketDataBar = () => {
   );
 
   if (error) {
-    return <div>Something went wrong</div>;
+    return <div className="text-sm">Failed to fetch data</div>;
   }
   if (isLoading || isUninitialized) {
     return (
-      <div className="dark:bg-darkPurple bg-lightPurple text-lightText h-[6vh] flex justify-center items-center gap-10 text-sm">
+      <div className="dark:bg-darkPurple bg-lightPurple text-lightText h-[6vh] flex justify-center items-center gap-10 text-sm w-screen">
         Loading
       </div>
     );
@@ -37,7 +37,7 @@ const MarketDataBar = () => {
   return (
     <>
       {isSuccess && (
-        <div className="dark:bg-darkPurple bg-lightPurple text-lightText h-[6vh] flex justify-center items-center gap-10 text-sm z-30">
+        <div className="dark:bg-darkPurple bg-lightPurple text-lightText h-[6vh] flex justify-center items-center gap-4 sm:gap-8 text-sm z-30 w-screen">
           <div className="flex items-center justify-center gap-2">
             <span>
               <CoinIcon />
@@ -58,12 +58,12 @@ const MarketDataBar = () => {
             </span>
             <span className="text-xs"> {formattedNumber}</span>
           </div>
-          <div className="text-xs flex justify-center items-center gap-1">
+          <div className="text-xs hidden sm:flex md:flex lg:flex xl:flex 2xl:flex justify-center items-center gap-1">
             <span>
               <DynamicCurrencyButton />
             </span>
             <span className="text-xs">{formattedVolume}</span>
-            <div className="w-12 flex items-center justify-center">
+            <div className="w-12 hidden sm:flex md:flex lg:flex xl:flex 2xl:flex items-center justify-center">
               <Line
                 percent={20}
                 strokeWidth={10}
@@ -73,7 +73,7 @@ const MarketDataBar = () => {
               />
             </div>
           </div>
-          <div className="flex gap-2">
+          <div className="hidden lg:flex xl:flex 2xl:flex gap-2">
             <div className="flex items-center justify-center">
               <BitcoinIcon />
             </div>
@@ -88,7 +88,7 @@ const MarketDataBar = () => {
               />
             </div>
           </div>
-          <div className="flex gap-2">
+          <div className="hidden lg:flex xl:flex 2xl:flex gap-2">
             <div className="flex items-center justify-center">
               <EtheriumIcon />
             </div>

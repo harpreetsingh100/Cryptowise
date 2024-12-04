@@ -79,17 +79,17 @@ const ConverterBox = ({
     <div
       className={`${
         sell
-          ? "w-[49%] flex mt-4 h-56  dark:bg-[#191934] rounded-lg flex-col p-4 justify-around"
-          : "w-[49%] flex mt-4 h-56  dark:bg-[#1F1934] rounded-lg flex-col p-4 justify-around"
+          ? "w-full lg:w-[49%] flex mt-4 h-56  dark:bg-[#191934] rounded-lg flex-col p-4 justify-around"
+          : "w-full lg:w-[49%] flex mt-4 h-56  dark:bg-[#1F1934] rounded-lg flex-col p-4 justify-around"
       }relative bg-white`}
       ref={ref}>
       {isSuccess && (
         <div className=" flex-col flex justify-around">
-          <h4 className="pt-4 ">You {sell ? "Sell" : "Buy"}</h4>
+          <h4 className="pt-4">You {sell ? "Sell" : "Buy"}</h4>
           <div className="flex w-full">
             <div className="w-full">
               <div className="flex justify-between items-center w-full">
-                <div className="w-10 flex h-10 items-center mt-4 justify-between relative">
+                <div className="w-5 lg:w-10 flex h-10 items-center mt-4 justify-between relative">
                   <Image
                     src={data?.image?.large}
                     width={100}
@@ -105,23 +105,32 @@ const ConverterBox = ({
                       );
                     }}>
                     {data ? (
-                      <h2 className="text-2xl ml-3 mt-2 overflow-hidden text-ellipsis whitespace-nowrap w-60">
-                        {data?.name}({data?.symbol?.toUpperCase()})
-                      </h2>
+                      <div>
+                        <div className="ml-3 mt-2 overflow-hidden text-ellipsis whitespace-nowrap max-w-28 sm:max-w-60 lg:max-w-48 xl:max-w-60 text-lg sm:text-lg md:text-lg lg:text-2xl">
+                          <div className="sm:flex max-w-28 sm:max-w-60 lg:max-w-48 xl:max-w-60  truncate sm:overflow-visible">
+                            <span className="max-w-10 sm:max-w-40 truncate">
+                              {data?.name}
+                            </span>
+                            <span className="ml-1 lg:ml-0 hidden sm:block">
+                              ({data?.symbol?.toUpperCase()})
+                            </span>
+                          </div>
+                        </div>
+                      </div>
                     ) : (
-                      <h2 className="text-2xl ml-3 mt-2 overflow-hidden text-ellipsis whitespace-nowrap w-60">
+                      <h2 className="text-lg sm:text-lg md:text-lg lg:text-2xl ml-3 mt-2 overflow-hidden text-ellipsis whitespace-nowrap w-60">
                         Failed to fetch data
                       </h2>
                     )}
 
                     <RiArrowDownSFill
-                      className="ml-3 mt-2 z-50 cursor-pointer dark:text-white text-black"
+                      className="lg:ml-3 mt-2 z-50 cursor-pointer dark:text-white text-black"
                       size={25}
                     />
                   </div>
                   {isCoinListVisible && (
                     <motion.div
-                      className="absolute top-16 w-[400px] left-[-10px] h-80 overflow-y-auto dark:bg-[#191925] bg-[#EBEBFC] px-8 py-4 rounded-2xl"
+                      className="absolute top-16 w-[290px] sm:w-[360px] z-50 lg:w-[400px] lg:left-[-10px] h-80 overflow-y-auto dark:bg-[#191925] bg-[#EBEBFC] px-4 sm:px-8 py-4 rounded-2xl"
                       variants={dropdownVariants}
                       initial="hidden"
                       animate="visible"
@@ -133,12 +142,12 @@ const ConverterBox = ({
                     </motion.div>
                   )}
                 </div>
-                <div className="mt-6 mr-3 z-30 ">
+                <div className="mt-6 mr-3 z-30">
                   <input
                     type="text"
                     value={inputValue}
                     name={inputName}
-                    className="py-2 rounded-xl px-4 cursor-pointer bg-[#B0B0F0] dark:bg-black "
+                    className="py-2 rounded-xl w-28 lg:w-20 xl:w-full px-4 cursor-pointer bg-[#B0B0F0] dark:bg-black "
                     onChange={(e) => {
                       setInputValue(e.target.value);
                       handleInputChange(e);

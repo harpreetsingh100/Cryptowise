@@ -16,7 +16,7 @@ const page = () => {
         <div className="max-w-[85%] m-auto pt-6 h-full">
           <ConverterTime />
           <div className="relative w-full">
-            <div className="flex w-full justify-between">
+            <div className="flex w-full justify-between flex-col lg:flex-row">
               <ConverterBoxes />
             </div>
           </div>

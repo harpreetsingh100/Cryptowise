@@ -21,14 +21,14 @@ const DescriptionDetailCard = ({
   isError,
 }: DescriptionDetailCoinCard) => {
   return (
-    <div className="overflow-y-auto w-[55%] h-full flex flex-col">
+    <div className="overflow-y-auto w-full lg:w-[55%] h-full flex flex-col">
       {isLoading || isError ? (
         <div className="w-[55%] h-full flex flex-col"></div>
       ) : (
         <div className="w-full h-full flex flex-col">
           {description && (
-            <div className="max-h-[60%] overflow-y-auto w-full h-auto">
-              <h2 className="text-gray-400 text-sm h-auto dynamic-content">
+            <div className="max-h-[60%] overflow-y-auto w-full lg:h-auto hidden lg:block">
+              <h2 className="text-gray-400 text-sm h-auto dynamic-content text-justify">
                 {parse(description)}
               </h2>
             </div>
@@ -36,7 +36,7 @@ const DescriptionDetailCard = ({
           <div
             className={`${
               description
-                ? "h-[40%] flex gap-6 flex-wrap pt-6"
+                ? "h-[40%] flex gap-6 flex-wrap lg:pt-6"
                 : "h-[40%] flex gap-6  flex-wrap"
             }`}>
             {link1 && (
@@ -45,7 +45,7 @@ const DescriptionDetailCard = ({
                   href={link1}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="overflow-hidden text-ellipsis whitespace-nowrap w-full"
+                  className="overflow-hidden text-ellipsis whitespace-nowrap w-full text-sm lg:text-lg"
                   whileHover={{ scale: 1.07 }}
                   whileTap={{ scale: 0.95 }}
                   transition={{ type: "spring", stiffness: 300 }}>
@@ -67,7 +67,7 @@ const DescriptionDetailCard = ({
                   href={link2}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="overflow-hidden text-ellipsis whitespace-nowrap w-full"
+                  className="overflow-hidden text-ellipsis whitespace-nowrap w-full text-sm lg:text-lg"
                   whileHover={{ scale: 1.07 }}
                   whileTap={{ scale: 0.95 }}
                   transition={{ type: "spring", stiffness: 300 }}>
@@ -89,7 +89,7 @@ const DescriptionDetailCard = ({
                   href={link3}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="overflow-hidden text-ellipsis whitespace-nowrap w-full"
+                  className="overflow-hidden text-ellipsis whitespace-nowrap w-full text-sm lg:text-lg"
                   whileHover={{ scale: 1.07 }}
                   whileTap={{ scale: 0.95 }}
                   transition={{ type: "spring", stiffness: 300 }}>

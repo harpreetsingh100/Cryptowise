@@ -60,96 +60,113 @@ const CoinTableHeader = ({ setCoins }: CoinsProps) => {
   };
 
   return (
-    <div className="w-full flex items-center">
-      <div className="w-[5%] flex justify-center items-center text-sm text-gray-600">
+    <div className="w-full flex items-center justify-between gap-4 lg:gap-0 lg:justfiy-start mt-6 lg:mt-0 mb-4">
+      <div className="w-[5%] justify-center items-center text-sm text-gray-600 hidden lg:flex">
         <p> #</p>
       </div>
-      <CoinTableSingleHeading
-        title="Name"
-        width="20"
-        justifyContent="center"
-        handleSort={handleSortAlphabetically}
-      />
-      <CoinTableSingleHeading
-        title="Price"
-        width="10"
-        justifyContent="start"
-        handleSort={() => {
-          handleSort(isToggleByPrice, "current_price", setIsToggleByPrice);
-        }}
-      />
-      <CoinTableSingleHeading
-        title="1h%"
-        width="8"
-        justifyContent="start"
-        handleSort={() => {
-          handleSort(
-            isToggleByOneHour,
-            "price_change_percentage_1h_in_currency",
-            setIsToggleByOneHour
-          );
-        }}
-      />
-      <CoinTableSingleHeading
-        title="24h%"
-        width="8"
-        justifyContent="start"
-        handleSort={() => {
-          handleSort(
-            isToggleBy24Hours,
-            "price_change_percentage_24h_in_currency",
-            setIsToggleBy24Hours
-          );
-        }}
-      />
-      <CoinTableSingleHeading
-        title="7d%"
-        width="8"
-        justifyContent="start"
-        handleSort={() => {
-          handleSort(
-            isToggleBy7Days,
-            "price_change_percentage_7d_in_currency",
-            setIsToggleBy7Days
-          );
-        }}
-      />
-      <CoinTableSingleHeading
-        title="24h volume / Market Cap"
-        width="18"
-        justifyContent="center"
-        handleSort={() => {
-          handleSort(
-            isToggleByTotalVolume,
-            "total_volume",
-            setIsToggleByTotalVolume
-          );
-        }}
-      />
-      <CoinTableSingleHeading
-        title="Circulating / Total Supply"
-        width="18"
-        justifyContent="center"
-        handleSort={() => {
-          handleSort(
-            isToggleByCirculatingSupply,
-            "circulating_supply",
-            setIsToggleByCirculatingSupply
-          );
-        }}
-      />
-      <CoinTableSingleHeading
-        title="Last 7d"
-        width="10"
-        justifyContent="center"
-        handleSort={() => {
-          handleSort(
-            isToggleBy7Days,
-            "price_change_percentage_7d_in_currency",
-            setIsToggleBy7Days
-          );
-        }}
-      />
+      <div className="sm:w-[20%] lg:w-[20%] flex justify-center ml-6 lg:ml-0">
+        <CoinTableSingleHeading
+          title="Name"
+          width="20"
+          justifyContent="center"
+          handleSort={handleSortAlphabetically}
+        />
+      </div>
+      <div className="w-[33.33%] sm:w-[20%] lg:w-[10%]  flex justify-center lg:justify-start sm:flex  lg:pl-1">
+        <CoinTableSingleHeading
+          title="Price"
+          width="10"
+          justifyContent="start"
+          handleSort={() => {
+            handleSort(isToggleByPrice, "current_price", setIsToggleByPrice);
+          }}
+        />
+      </div>
+      <div className="lg:w-[8%] sm:w-[20%] hidden sm:flex justify-center lg:justify-start">
+        <CoinTableSingleHeading
+          title="1h%"
+          width="8"
+          justifyContent="start"
+          handleSort={() => {
+            handleSort(
+              isToggleByOneHour,
+              "price_change_percentage_1h_in_currency",
+              setIsToggleByOneHour
+            );
+          }}
+        />
+      </div>
+      <div className="w-[33.33%] sm:w-[20%] lg:w-[8%] justify-center lg:justify-start hidden sm:flex">
+        <CoinTableSingleHeading
+          title="24h%"
+          width="8"
+          justifyContent="start"
+          handleSort={() => {
+            handleSort(
+              isToggleBy24Hours,
+              "price_change_percentage_24h_in_currency",
+              setIsToggleBy24Hours
+            );
+          }}
+        />
+      </div>
+      <div className="w-[8%] hidden lg:flex">
+        <CoinTableSingleHeading
+          title="7d%"
+          width="8"
+          justifyContent="start"
+          handleSort={() => {
+            handleSort(
+              isToggleBy7Days,
+              "price_change_percentage_7d_in_currency",
+              setIsToggleBy7Days
+            );
+          }}
+        />
+      </div>
+      <div className="w-[18%] justify-center hidden lg:flex">
+        <CoinTableSingleHeading
+          title="24h volume / Market Cap"
+          width="18"
+          justifyContent="center"
+          handleSort={() => {
+            handleSort(
+              isToggleByTotalVolume,
+              "total_volume",
+              setIsToggleByTotalVolume
+            );
+          }}
+        />
+      </div>
+      <div className="w-[18%] justify-center hidden lg:flex">
+        <CoinTableSingleHeading
+          title="Circulating / Total Supply"
+          width="18"
+          justifyContent="center"
+          handleSort={() => {
+            handleSort(
+              isToggleByCirculatingSupply,
+              "circulating_supply",
+              setIsToggleByCirculatingSupply
+            );
+          }}
+        />
+      </div>
+
+      <div className="w-[33.33%] sm:w-[20%] lg:w-[10%] flex justify-center whitespace-nowrap lg:whitespace-normal  ml-2 lg:ml-0">
+        <CoinTableSingleHeading
+          title="Last 7d"
+          width="10"
+          justifyContent="center"
+          handleSort={() => {
+            handleSort(
+              isToggleBy7Days,
+              "price_change_percentage_7d_in_currency",
+              setIsToggleBy7Days
+            );
+          }}
+        />
+      </div>
     </div>
   );
 };

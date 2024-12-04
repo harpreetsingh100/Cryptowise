@@ -38,8 +38,8 @@ const CoinInfo = ({ coinName }: { coinName: string }) => {
 
   return (
     <div className="pb-8">
-      <h2 className="text-2xl">Coin Details</h2>
-      <div className="h-[460px] flex justify-between mt-6 gap-6">
+      <h2 className="text-lg lg:text-2xl">Coin Details</h2>
+      <div className="h-auto sm:h-auto lg:h-[460px] flex justify-between mt-6 gap-6 flex-col lg:flex-row">
         <TopLeftCoinDetailCard
           imgUrl={data?.image?.large}
           coinName={data?.name}
@@ -69,8 +69,8 @@ const CoinInfo = ({ coinName }: { coinName: string }) => {
       <div className="border-1 border-white my-8">
         <hr />
       </div>
-      <div className="flex justify-between gap-[2%] h-[200px]">
-        <div className=" w-[49%] p-6 bg-[#FFFFFF] dark:bg-[#1E1932] flex flex-col justify-between rounded-xl shadow-sm">
+      <div className="flex justify-between gap-6 lg:gap-[2%]  h-full lg:h-[200px] flex-col lg:flex-row">
+        <div className="w-full lg:w-[49%] p-6 bg-[#FFFFFF] dark:bg-[#1E1932] flex flex-col justify-between rounded-xl shadow-sm gap-4 lg:gap-0">
           <CoinInfoBulletPoint
             heading="Total Volume"
             data={addCommas(
@@ -101,7 +101,7 @@ const CoinInfo = ({ coinName }: { coinName: string }) => {
             isError={isError}
           />
         </div>
-        <div className=" w-[49%] bg-[#FFFFFF] dark:bg-[#1E1932] flex flex-col justify-between p-6 rounded-xl shadow-sm">
+        <div className="w-full lg:w-[49%] bg-[#FFFFFF] dark:bg-[#1E1932] flex flex-col justify-between p-6 rounded-xl shadow-sm gap-4 lg:gap-0">
           <CoinInfoBulletPoint
             heading="Max Supply"
             data={
@@ -125,7 +125,7 @@ const CoinInfo = ({ coinName }: { coinName: string }) => {
           <div>
             <div className="flex justify-between w-full">
               {supplyPercentage && (
-                <div className="flex justify-between w-full">
+                <div className="flex justify-between w-full text-sm lg:text-lg">
                   <span>
                     {data?.market_data?.circulating_supply &&
                       calculateSupplyPercentage(
@@ -160,7 +160,7 @@ const CoinInfo = ({ coinName }: { coinName: string }) => {
           </div>
         </div>
       </div>
-      <div className="h-[140px] w-[49%] p-6 bg-[#FFFFFF] dark:bg-[#1E1932] flex flex-col justify-between gap-[4%] mt-6 rounded-xl shadow-sm">
+      <div className="h-[140px] w-full lg:w-[49%] p-6 bg-[#FFFFFF] dark:bg-[#1E1932] flex flex-col justify-between gap-[4%] mt-6 rounded-xl shadow-sm">
         <CoinInfoBulletPoint
           heading="Market Cap"
           data={addCommas(

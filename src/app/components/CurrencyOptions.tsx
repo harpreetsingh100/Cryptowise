@@ -38,13 +38,17 @@ const CurrencyOptions: React.FC<ChildComponentProps> = ({
       initial="hidden"
       animate="visible"
       exit="exit"
-      className="bg-[#ebebfd] rounded-lg dark:bg-[#191925] w-[100px] flex justify-between items-center cursor-pointer absolute top-[-1px] left-[-1px] flex-col gap-3 p-2 py-4 border-[1px] border-[#6B7280] z-50">
+      className="bg-[#ebebfd] rounded-lg dark:bg-[#191925] flex justify-between items-center cursor-pointer absolute top-[-1px] left-[-1px] flex-col gap-3 p-2 py-4 sm:border-[1px] sm:border-[#6B7280] z-50 w-[65px] sm:w-[90px] md:w-[100px] text-sm lg:text-lg">
       {["USD", "EUR", "GBP", "BTC", "ETH"].map((currency) => (
         <div
           key={currency}
-          className="flex justify-center items-center gap-2 bg-[#ebebfd] dark:bg-[#191925] min-w-16 hover:text-[#6161D6]"
+          className="flex justify-center items-center gap-2 bg-[#ebebfd] dark:bg-[#191925] w-[45px] sm:w-full sm:min-w-16 hover:text-[#6161D6] text-sm lg:text-[16px]"
           onClick={() => handleCurrencyChange(currency)}>
-          <div className={`${currencyType === currency && "text-[#6161D6]"}`}>
+          <div
+            className={`${
+              currencyType === currency &&
+              "text-[#6161D6] text-sm lg:text-[16px]"
+            }`}>
             {currency}
           </div>
         </div>

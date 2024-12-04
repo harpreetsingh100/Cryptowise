@@ -71,28 +71,33 @@ const CoinInfoItem: React.FC<CoinInfoItemProps> = ({ coin, index }) => {
   const dotStyling = theme === "dark" ? lightDotDarkMode : lightDotLightMode;
 
   return (
-    <div className="overflow-visible h-full w-full">
+    <div className="h-full w-full">
       <motion.div
-        className="flex justify-between bg-lightBg dark:bg-[#191926] my-3 rounded-xl h-16 overflow-visible"
+        className="flex justify-between bg-lightBg dark:bg-[#191926] my-3 rounded-xl lg:h-20 h-[80px]"
         whileHover={{ scale: 1.01 }}
         whileTap={{ scale: 0.95 }}
         transition={{ type: "spring", stiffness: 300 }}>
-        <div className="w-[5%] flex justify-start items-center">
+        <div className="w-[5%] justify-start items-center hidden lg:flex">
           <h1 className="ml-4 text-gray-600">{index + 1}</h1>
         </div>
-        <div className="w-[20%] flex justify-start items-center text-sm">
-          <div>
+        <div className="w-[33.33%] sm:w-[20%] lg:w-[20%] flex justify-start items-center text-sm">
+          <div className="ml-4 lg:ml-0">
             <Image src={image} alt={id} width={25} height={50} />
           </div>
-          <div className="ml-4 text-gray-600 dark:text-lightText">
-            {name} ({symbol.toUpperCase()})
+          <div className="ml-4 text-gray-600 dark:text-lightText flex sm:flex-col lg:flex-row">
+            <span className="hidden sm:block max-w-20 truncate">{name} </span>
+            <span className="sm:flex lg:ml-1">
+              <span className="hidden sm:block">{"("}</span>
+              {symbol.toUpperCase()}
+              <span className="hidden sm:block">{")"}</span>
+            </span>
           </div>
         </div>
-        <div className="w-[8%] flex justify-start items-center text-sm text-gray-600 dark:text-lightText">
+        <div className="w-[33.33%] sm:w-[20%] lg:w-[8%] flex justify-center lg:justify-start items-center text-sm text-gray-600 dark:text-lightText">
           <DynamicCurrencyButton />
           <div className="pl-1">{addCommas(current_price.toFixed(2))}</div>
         </div>
-        <div className="w-[8%] flex justify-start items-center text-sm">
+        <div className="lg:w-[8%] sm:w-[20%] justify-start items-center text-sm hidden sm:flex pl-6 lg:pl-0">
           <span className="flex justify-center items-center mx-1">
             {price_change_percentage_1h_in_currency > 0 ? (
               <RiArrowUpSFill color="#02F1E3" />
@@ -112,7 +117,7 @@ const CoinInfoItem: React.FC<CoinInfoItemProps> = ({ coin, index }) => {
             %
           </span>
         </div>
-        <div className="w-[8%] flex justify-start items-center text-sm">
+        <div className="w-[8%] justify-start items-center text-sm hidden sm:flex">
           <span className="flex justify-center items-center mx-1">
             {price_change_percentage_24h_in_currency > 0 ? (
               <RiArrowUpSFill color="#02F1E3" />
@@ -132,7 +137,7 @@ const CoinInfoItem: React.FC<CoinInfoItemProps> = ({ coin, index }) => {
             %
           </span>
         </div>
-        <div className="w-[10%] flex justify-start items-center">
+        <div className="w-[10%] justify-start items-center hidden lg:flex">
           <span className="flex justify-center items-center mx-1">
             {price_change_percentage_7d_in_currency > 0 ? (
               <RiArrowUpSFill color="#02F1E3" />
@@ -152,7 +157,7 @@ const CoinInfoItem: React.FC<CoinInfoItemProps> = ({ coin, index }) => {
             %
           </span>
         </div>
-        <div className="w-[18%] flex justify-start items-center flex-col px-2 h-full">
+        <div className="w-[18%]  justify-start items-center flex-col px-2 h-full hidden lg:flex">
           <div className="flex justify-between w-full h-full mt-4">
             <div className="flex justify-center items-center">
               <p
@@ -177,7 +182,7 @@ const CoinInfoItem: React.FC<CoinInfoItemProps> = ({ coin, index }) => {
               </p>
             </div>
           </div>
-          <div className="w-full h-full">
+          <div className="w-full h-full hidden lg:flex">
             <Line
               percent={(total_volume / market_cap) * 100}
               strokeWidth={1}
@@ -193,7 +198,7 @@ const CoinInfoItem: React.FC<CoinInfoItemProps> = ({ coin, index }) => {
             <div></div>
           </div>
         </div>
-        <div className="w-[18%] flex justify-start items-center flex-col px-2 h-full">
+        <div className="w-[18%]  justify-start items-center flex-col px-2 h-full hidden lg:flex">
           <div className="flex justify-between w-full h-full mt-4">
             <div className="flex justify-center items-center">
               <p
@@ -234,8 +239,8 @@ const CoinInfoItem: React.FC<CoinInfoItemProps> = ({ coin, index }) => {
             />
           </div>
         </div>
-        <div className="w-[10%] px-4 flex justify-center items-center h-full">
-          <div className="w-full h-[95%]">
+        <div className="w-[33.33%] sm:w-[20%] lg:w-[10%] px-4 flex justify-center items-center h-full">
+          <div className="lg:w-full h-[50%] lg:h-[75%] w-20 sm:w-16">
             <TableChart
               index={index}
               chartData={sparkline_in_7d.price}
