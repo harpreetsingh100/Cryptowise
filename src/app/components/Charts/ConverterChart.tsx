@@ -69,7 +69,7 @@ const ConverterChart = ({
     []
   );
   return (
-    <div className="bg-white dark:bg-[#191934] p-6 rounded-xl h-[350px] w-full">
+    <div className="bg-white dark:bg-[#191934] p-6 rounded-xl h-[280px] sm:h-[320px] lg:h-[350px]  w-full">
       <Line options={chartOptions} data={data} />
     </div>
   );

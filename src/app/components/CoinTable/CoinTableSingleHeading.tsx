@@ -16,7 +16,7 @@ const CoinTableSingleHeading = ({
     <div
       className={`w-[${width}%] flex justify-${justifyContent} items-center text-sm text-gray-600 cursor-pointer`}
       onClick={handleSort}>
-      <p> {title}</p>
+      <p className=" lg:flex lg:whitespace-nowrap"> {title}</p>
       <motion.div
         className="flex justify-center items-center ml-2"
         whileHover={{ scale: 1.5 }}

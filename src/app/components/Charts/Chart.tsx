@@ -54,16 +54,18 @@ const Chart = () => {
   const isSuccess = isSuccessOne || isSuccessTwo || isSuccessThree;
 
   return (
-    <div className="w-[85%] mx-auto mt-8 h-[500px]">
-      <div className="flex justify-between items-center gap-[2%]">
-        <div className="h-full w-[49%]">
+    <div className="w-[85%] mx-auto mt-8 h-[500px] md:h-[500px]">
+      <div className="flex flex-col lg:justify-between lg:flex-row items-center gap-[2%]">
+        <div className="h-full w-full lg:w-[49%]">
           {!selectedCoin && !selectedCoinTwo && !selectedCoinThree && (
-            <div className="h-[420px] bg-white dark:bg-[#191934] px-6 flex justify-center items-center rounded-xl">
-              <h2 className="text-xl">Select a coin to see the chart data</h2>
+            <div className="h-[280px] sm:h-[320px] lg:h-[420px] bg-white dark:bg-[#191934] px-6 flex justify-center items-center rounded-xl">
+              <h2 className="text-sm sm:text-sm md:text-lg lg:text-lg">
+                Select a coin to see the chart data
+              </h2>
             </div>
           )}
           {isError && (
-            <div className="bg-white dark:bg-[#191934] py-6 rounded-xl h-[420px] w-full flex justify-center items-center text-2xl">
+            <div className="bg-white dark:bg-[#191934] py-6 rounded-xl h-[280px] sm:h-[320px] lg:h-[420px]  w-full flex justify-center items-center text-sm sm:text-sm md:text-lg lg:text-lg">
               Failed to fetch data
             </div>
           )}
@@ -88,14 +90,16 @@ const Chart = () => {
             </div>
           )}
         </div>
-        <div className="h-full w-[49%]">
+        <div className="h-full w-full lg:w-[49%] mt-8 lg:mt-0">
           {!selectedCoin && !selectedCoinTwo && !selectedCoinThree && (
-            <div className="h-[420px] bg-white dark:bg-[#191934] px-6 flex justify-center items-center rounded-xl">
-              <h2 className="text-xl">Select a coin to see the chart data</h2>
+            <div className="h-[280px] sm:h-[320px] lg:h-[420px]  bg-white dark:bg-[#191934] px-6 flex justify-center items-center rounded-xl">
+              <h2 className="text-sm sm:text-sm md:text-lg lg:text-lg">
+                Select a coin to see the chart data
+              </h2>
             </div>
           )}
           {isError && (
-            <div className="bg-white dark:bg-[#191934] py-6 rounded-xl h-[420px] w-full flex justify-center items-center text-2xl">
+            <div className="bg-white dark:bg-[#191934] py-6 rounded-xl h-[280px] sm:h-[320px] lg:h-[420px]  w-full flex justify-center items-center text-sm sm:text-sm md:text-lg lg:text-lg">
               Failed to fetch data
             </div>
           )}
@@ -119,7 +123,7 @@ const Chart = () => {
           )}
         </div>
       </div>
-      <div className=" w-[315px] flex gap-2 bg-[#E3E5FB] dark:bg-[#232337] rounded-lg mt-6 text-black dark:text-white border-red-800">
+      <div className="w-[298px] lg:w-[330px] m-auto sm:m-0 sm:mt-6 lg:mt-8 flex justify-center lg:gap-2 bg-[#E3E5FB] dark:bg-[#232337] rounded-lg mt-6 text-black dark:text-white">
         <DaysButtons days={days} setDays={setDays} />
       </div>
     </div>

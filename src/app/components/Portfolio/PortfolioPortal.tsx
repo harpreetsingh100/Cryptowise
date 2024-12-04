@@ -121,7 +121,7 @@ const PortfolioPortal = ({
     <div className="fixed inset-0 z-50">
       <div className="h-screen w-screen absolute top-0 left-0 bg-[rgba(43,38,86,0.7)]">
         <div className="relative h-screen w-screen">
-          <div className="w-[60%] h-1/2 py-10 px-12 z-40 rounded-xl inset-0 dark:bg-[#13121A] bg-white absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] transform ">
+          <div className="w-[85%] lg:w-[60%] h-[55%] lg:h-1/2 py-10 px-12 z-40 rounded-xl inset-0 dark:bg-[#13121A] bg-white absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] transform ">
             <div className="w-full flex justify-between items-center">
               <h2>Select Coins</h2>
               <span
@@ -136,7 +136,7 @@ const PortfolioPortal = ({
             <form
               className="flex justify-between w-full mt-9"
               onSubmit={handleFormSubmit}>
-              <div className="h-60 w-[49%] flex justify-center items-center dark:bg-[#1E1931] bg-[#EBEBFC] rounded-lg">
+              <div className="h-60 w-[49%] lg:flex justify-center items-center dark:bg-[#1E1931] bg-[#EBEBFC] rounded-lg hidden">
                 <div className="dark:bg-[#2C2C4A] bg-white w-[25%] h-[30%] rounded-xl flex justify-center items-center">
                   {data && data[0]?.image ? (
                     <Image
@@ -156,7 +156,7 @@ const PortfolioPortal = ({
                   )}
                 </div>
               </div>
-              <div className="h-60 w-[49%]">
+              <div className="h-60 w-full lg:w-[49%]">
                 <div className="flex flex-col gap-6 h-[70%]">
                   <div className="h-[33.33%] dark:bg-[#191925] bg-[#EBEBFC] rounded-lg flex items-center py-2 dark:text-[#9CA3AF] text-[#353570]">
                     {showSelectCoinInput ? (
@@ -273,7 +273,8 @@ const PortfolioPortal = ({
                       whileHover={{ scale: 1.09 }}
                       whileTap={{ scale: 0.95 }}
                       transition={{ type: "spring", stiffness: 300 }}>
-                      Save and Continue
+                      <span className="hidden xl:block">Save and Continue</span>
+                      <span className="xl:hidden">Continue</span>
                     </motion.button>
                   </div>
                 </div>

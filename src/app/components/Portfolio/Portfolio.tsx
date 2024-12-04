@@ -85,7 +85,7 @@ const Portfolio = () => {
               })}
             </div>
           ) : (
-            <div className="text-2xl flex justify-center items-center mt-8">
+            <div className="text-lg lg:text-2xl flex justify-center items-center mt-8">
               <p>Your portfolio is currently empty</p>
             </div>
           )}
